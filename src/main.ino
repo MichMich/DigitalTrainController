@@ -39,6 +39,7 @@ XpressNetClass XpressNet;
 
 #define MIN_TIME 30000
 #define MAX_TIME 60000
+#define SPEED 32
 
 #define BUTTON_START 6
 #define BUTTON_END 7
@@ -106,7 +107,7 @@ void stop() {
 void depart(bool direction) {
   digitalWrite(LED_BUILTIN, direction);
 
-  byte speed = (direction) ? 32 : 32+128;
+  byte speed = (direction) ? SPEED : SPEED+128;
   XpressNet.setLocoFunc(0x00,TRAIN_ID,1,SOUND_DEPART);
   XpressNet.setLocoFunc(0x00,TRAIN_ID,0,SOUND_DEPART);
 
