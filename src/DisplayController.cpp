@@ -8,8 +8,6 @@ DisplayController::DisplayController() : u8g2(U8G2_R0)
 void DisplayController::init()
 {
     u8g2.begin();
-    _autoDriveText = F("-");
-    _soundEffectText = F("-");
 }
 
 void DisplayController::update()
@@ -37,19 +35,6 @@ void DisplayController::setSchedulerState(Scheduler scheduler, boolean state)
 void DisplayController::setAutoDriveTime(int time)
 {
     if (_autoDriveTime != time) {
-        if (time == -1) {
-            _autoDriveText = F("-");
-        } else if (time == 0) {
-            _autoDriveText = F("NOW");
-        } else {
-             char buffer[10];
-            int seconds = time % 60;
-            int minutes = time / 60;
-            sprintf(buffer, "%02d:%02d", minutes, seconds);
-            _autoDriveText = buffer;
-        }
-
-        
         _needsUpdate = true;
         _autoDriveTime = time;
     }
@@ -58,18 +43,6 @@ void DisplayController::setAutoDriveTime(int time)
 void DisplayController::setSoundEffectTime(int time)
 {
     if (_soundEffectTime != time) {
-        if (time == -1) {
-            _soundEffectText = F("-");
-        } else if (time == 0) {
-            _soundEffectText = F("NOW");
-        } else {
-             char buffer[10];
-            int seconds = time % 60;
-            int minutes = time / 60;
-            sprintf(buffer, "%02d:%02d", minutes, seconds);
-            _soundEffectText = buffer;
-        }
-        
         _needsUpdate = true;
         _soundEffectTime = time;
     }
@@ -84,33 +57,14 @@ void DisplayController::setStatusMessage(String message)
 // Private
 
 void DisplayController:: drawAutoDriveTimer() {
-    u8g2.setFont(u8g2_font_5x7_tr);
-    u8g2.setFontMode(1);
-    u8g2.setDrawColor(2);
-
-    u8g2.drawStr(0,21, "AUTO");
-    u8g2.drawStr(0,29, "DRIVE");
-
-    u8g2.setFont(u8g2_font_crox4hb_tr);
-
-    u8g2_uint_t width  = u8g2.getStrWidth(_autoDriveText.c_str());
-    u8g2.drawStr(128-width, 29, _autoDriveText.c_str());
+    int time = (_schedulerSates[AutomaticDriveScheduler]) ? _autoDriveTime : -1;
+    drawTimer(F("AUTO"), F("DRIVE"), time, 29);
 }
 
 void DisplayController:: drawSoundTimer() {
-    u8g2.setFont(u8g2_font_5x7_tr);
-    u8g2.setFontMode(1);
-    u8g2.setDrawColor(2);
-
-    u8g2.drawStr(0,41, "SOUND");
-    u8g2.drawStr(0,49, "EFFECT");
-
-    u8g2.setFont(u8g2_font_crox4hb_tr);
-
-    u8g2_uint_t width  = u8g2.getStrWidth(_soundEffectText.c_str());
-    u8g2.drawStr(128-width, 49, _soundEffectText.c_str());
+    int time = (_schedulerSates[TrainSoundScheduler] || _schedulerSates[StationSoundScheduler]) ? _soundEffectTime : -1;
+    drawTimer(F("SOUND"), F("EFFECT"), time, 49);
 }
-
 
 void DisplayController::drawSchedulerStates() {
     u8g2.setDrawColor(1);
@@ -146,4 +100,31 @@ void DisplayController::drawStatus() {
     u8g2.setFont(u8g2_font_5x7_tr);
     u8g2_uint_t width  = u8g2.getStrWidth(_statusMessage.c_str());
     u8g2.drawStr(64 - width / 2, 63, _statusMessage.c_str());
+}
+
+void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine) {
+    String time;
+    if (timeInSeconds == -1) {
+        time = F("-");
+    } else if (timeInSeconds == 0) {
+        time = F("NOW");
+    } else {
+        char buffer[10];
+        int seconds = timeInSeconds % 60;
+        int minutes = timeInSeconds / 60;
+        sprintf(buffer, "%02d:%02d", minutes, seconds);
+        time = buffer;
+    }
+
+    u8g2.setFont(u8g2_font_5x7_tr);
+    u8g2.setFontMode(1);
+    u8g2.setDrawColor(2);
+
+    u8g2.drawStr(0, yPositionBaseLine - 8, topLabel.c_str());
+    u8g2.drawStr(0, yPositionBaseLine, bottomLabel.c_str());
+
+    u8g2.setFont(u8g2_font_crox4hb_tr);
+
+    u8g2_uint_t width  = u8g2.getStrWidth(time.c_str());
+    u8g2.drawStr(128-width, yPositionBaseLine, time.c_str());
 }

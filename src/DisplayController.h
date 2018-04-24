@@ -22,14 +22,13 @@ class DisplayController {
         void drawSoundTimer();
         void drawSchedulerStates();
         void drawStatus();
+        void drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine);
 
         boolean _needsUpdate = true;
         boolean _schedulerSates [3] = {false, false, false};
         U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2;
-        int _autoDriveTime;
-        int _soundEffectTime;
-        String _autoDriveText;
-        String _soundEffectText;
+        int _autoDriveTime = -1;
+        int _soundEffectTime = -1;
         String _statusMessage;
         
 

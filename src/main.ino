@@ -23,14 +23,12 @@ void setup() {
   pinMode(BUTTON_3, INPUT);
 
   displayController.init();
-
-  displayController.setAutoDriveTime(0);
-  displayController.setSoundEffectTime(0);
   displayController.setStatusMessage(F("BOOTING ..."));
   displayController.update(); 
   delay(1000);
 
   displayController.setStatusMessage(F("SYSTEM READY!"));
+  displayController.update();
 }
 
 void loop() {
@@ -56,8 +54,8 @@ void loop() {
     displayController.setStatusMessage(stationSound ? F("STATION SOUNDS ENABLED") : F("STATION SOUNDS DISABLED"));
   }
 
-  displayController.setAutoDriveTime(autoDrive ? millis() / 1000 : -1);
-  displayController.setSoundEffectTime((trainSound || stationSound) ? millis() / 1000 : -1);
+  displayController.setAutoDriveTime(millis() / 1000);
+  displayController.setSoundEffectTime(millis() / 1000);
 
   displayController.update();  
 }
