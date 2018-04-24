@@ -1,5 +1,9 @@
 #include "DisplayController.h"
 
+extern unsigned int __bss_end;
+extern unsigned int __heap_start;
+extern void *__brkval;
+
 DisplayController::DisplayController() : u8g2(U8G2_R0)
 {
 
@@ -12,6 +16,11 @@ void DisplayController::init()
 
 void DisplayController::update()
 {
+    if (_resetStatusTimer > STATUS_RESET_DELAY && _statusMessage != "") {
+        // setStatusMessage("");
+        setStatusMessage(String(String(freeMemory()) + " BYTES FREE (RAM)" ));
+    }
+
     if (_needsUpdate) {
         u8g2.firstPage();
         do {
@@ -48,10 +57,15 @@ void DisplayController::setSoundEffectTime(int time)
     }
 }
 
-void DisplayController::setStatusMessage(String message)
+void DisplayController::setStatusMessage(String message, bool instant = false)
 {
+    _resetStatusTimer = 0;
     _statusMessage = message;
     _needsUpdate = true;
+
+    if (instant) {
+        update();
+    }
 }
 
 // Private
@@ -106,8 +120,8 @@ void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeI
     String time;
     if (timeInSeconds == -1) {
         time = F("-");
-    } else if (timeInSeconds == 0) {
-        time = F("NOW");
+    // } else if (timeInSeconds == 0) {
+    //     time = F("NOW");
     } else {
         char buffer[10];
         int seconds = timeInSeconds % 60;
@@ -127,4 +141,15 @@ void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeI
 
     u8g2_uint_t width  = u8g2.getStrWidth(time.c_str());
     u8g2.drawStr(128-width, yPositionBaseLine, time.c_str());
+}
+
+int DisplayController::freeMemory() {
+  int free_memory;
+
+  if((int)__brkval == 0)
+     free_memory = ((int)&free_memory) - ((int)&__bss_end);
+  else
+    free_memory = ((int)&free_memory) - ((int)__brkval);
+
+  return free_memory;
 }

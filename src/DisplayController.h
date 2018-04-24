@@ -1,5 +1,8 @@
 #include <Arduino.h>
 #include <U8g2lib.h>
+#include <elapsedMillis.h>
+
+#define STATUS_RESET_DELAY 5000
 
 enum Scheduler {
     AutomaticDriveScheduler = 0,
@@ -15,7 +18,7 @@ class DisplayController {
         void setSchedulerState(Scheduler scheduler, boolean state);
         void setAutoDriveTime(int time);
         void setSoundEffectTime(int time);
-        void setStatusMessage(String message);
+        void setStatusMessage(String message, bool instant = false);
 
     private:
         void drawAutoDriveTimer();
@@ -24,12 +27,15 @@ class DisplayController {
         void drawStatus();
         void drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine);
 
+        int freeMemory();
+
         boolean _needsUpdate = true;
         boolean _schedulerSates [3] = {false, false, false};
-        U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2;
+        U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2;
         int _autoDriveTime = -1;
         int _soundEffectTime = -1;
         String _statusMessage;
+        elapsedMillis _resetStatusTimer;
         
 
 };
