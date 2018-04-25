@@ -14,8 +14,9 @@
 
 TaskManager taskManager;
 SoundPlayer soundPlayer;
-RandomTimeTask autoDriveTask(MsToTaskTime(3000), MsToTaskTime(8000));
-RandomTimeTask soundEffectTask(MsToTaskTime(10000), MsToTaskTime(60000));
+RandomTimeTask autoDriveTask(MsToTaskTime(60000), MsToTaskTime(120000));
+RandomTimeTask trainSoundTask(MsToTaskTime(10000), MsToTaskTime(20000));
+RandomTimeTask stationSoundTask(MsToTaskTime(10000), MsToTaskTime(20000));
 
 Button button1 = Button(A1, false, true, 25);
 Button button2 = Button(A2, false, true, 25);
@@ -38,7 +39,7 @@ void setup() {
   soundPlayer.init();
 
   displayController.setStatusMessage(F("SETTING VOLUME"), true);
-  soundPlayer.setVolume(5);
+  soundPlayer.setVolume(10);
 
   displayController.setStatusMessage(F("READING SONGCOUNT"), true);
   displayController.setStatusMessage(String("FOUND SOUND FILES: " + String(soundPlayer.getSongCount())), true);
@@ -51,12 +52,21 @@ void setup() {
     // taskManager.StopTask(&autoDriveTask);
   });
 
-  soundEffectTask.setCallback([]() {
-    int num = soundPlayer.playRandomSound();
-    displayController.setStatusMessage(String("PLAYING STATION SOUND: " + String(num)));
+  trainSoundTask.setCallback([]() {
+    int num = 0; //soundPlayer.playRandomSound();
+    displayController.setStatusMessage(String("PLAYING TRAIN SOUND: " + String(num)));
     digitalWrite(LED_2, HIGH);
     delay(50);
     digitalWrite(LED_2, LOW);
+    // taskManager.StopTask(&autoDriveTask);
+  });
+
+  stationSoundTask.setCallback([]() {
+    int num = soundPlayer.playRandomSound();
+    displayController.setStatusMessage(String("PLAYING STATION SOUND: " + String(num)));
+    digitalWrite(LED_3, HIGH);
+    delay(50);
+    digitalWrite(LED_3, LOW);
     // taskManager.StopTask(&autoDriveTask);
   });
   
@@ -70,7 +80,8 @@ void loop() {
   taskManager.Loop();
 
   displayController.setAutoDriveTime(autoDriveTask.remainingTimeInSeconds());
-  displayController.setSoundEffectTime(soundEffectTask.remainingTimeInSeconds());
+  displayController.setTrainSoundTime(trainSoundTask.remainingTimeInSeconds());
+  displayController.setStationSoundTime(stationSoundTask.remainingTimeInSeconds());
 
   displayController.update();  
 }
@@ -96,10 +107,10 @@ void checkButtons() {
     trainSound = !trainSound;
     displayController.setSchedulerState(TrainSoundScheduler, trainSound);
     if (trainSound) {
-      if (!stationSound) taskManager.StartTask(&soundEffectTask);
+      taskManager.StartTask(&trainSoundTask);
       displayController.setStatusMessage(F("TRAIN SOUND ENABLED"));
     } else {
-      if (!stationSound) taskManager.StopTask(&soundEffectTask);
+      taskManager.StopTask(&trainSoundTask);
       displayController.setStatusMessage(F("TRAIN SOUND DISABLED"));
     }
   }
@@ -108,10 +119,10 @@ void checkButtons() {
     stationSound = !stationSound;
     displayController.setSchedulerState(StationSoundScheduler, stationSound);
     if (stationSound) {
-      if (!trainSound) taskManager.StartTask(&soundEffectTask);
+      taskManager.StartTask(&stationSoundTask);
       displayController.setStatusMessage(F("STATION SOUND ENABLED"));
     } else {
-      if (!trainSound) taskManager.StopTask(&soundEffectTask);
+      taskManager.StopTask(&stationSoundTask);
       displayController.setStatusMessage(F("STATION SOUND DISABLED"));
     }
   }

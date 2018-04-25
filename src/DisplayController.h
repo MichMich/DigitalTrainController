@@ -17,15 +17,17 @@ class DisplayController {
         void update();
         void setSchedulerState(Scheduler scheduler, boolean state);
         void setAutoDriveTime(int time);
-        void setSoundEffectTime(int time);
+        void setTrainSoundTime(int time);
+        void setStationSoundTime(int time);
         void setStatusMessage(String message, bool instant = false);
 
     private:
         void drawAutoDriveTimer();
-        void drawSoundTimer();
+        void drawTrainSoundTimer();
+        void drawStationSoundTimer();
         void drawSchedulerStates();
         void drawStatus();
-        void drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine);
+        void drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine, int8_t xPosition = 0, int8_t width = 128);
 
         int freeMemory();
 
@@ -33,7 +35,8 @@ class DisplayController {
         boolean _schedulerSates [3] = {false, false, false};
         U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2;
         int _autoDriveTime = -1;
-        int _soundEffectTime = -1;
+        int _trainSoundTime = -1;
+        int _stationSoundTime = -1;
         String _statusMessage;
         elapsedMillis _resetStatusTimer;
         

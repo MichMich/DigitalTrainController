@@ -25,7 +25,8 @@ void DisplayController::update()
         u8g2.firstPage();
         do {
             drawAutoDriveTimer();
-            drawSoundTimer();
+            drawTrainSoundTimer();
+            drawStationSoundTimer();
             drawSchedulerStates();
             drawStatus();
         } while ( u8g2.nextPage() );
@@ -49,11 +50,19 @@ void DisplayController::setAutoDriveTime(int time)
     }
 }
 
-void DisplayController::setSoundEffectTime(int time)
+void DisplayController::setTrainSoundTime(int time)
 {
-    if (_soundEffectTime != time) {
+    if (_trainSoundTime != time) {
         _needsUpdate = true;
-        _soundEffectTime = time;
+        _trainSoundTime = time;
+    }
+}
+
+void DisplayController::setStationSoundTime(int time)
+{
+    if (_stationSoundTime != time) {
+        _needsUpdate = true;
+        _stationSoundTime = time;
     }
 }
 
@@ -71,13 +80,18 @@ void DisplayController::setStatusMessage(String message, bool instant = false)
 // Private
 
 void DisplayController:: drawAutoDriveTimer() {
+    u8g2.drawBox(0, 11, 128, 21);
     int time = (_schedulerSates[AutomaticDriveScheduler]) ? _autoDriveTime : -1;
-    drawTimer(F("AUTO"), F("DRIVE"), time, 29);
+    drawTimer(F("AUTO"), F("DRIVE"), time, 28, 4, 120);
 }
 
-void DisplayController:: drawSoundTimer() {
-    int time = (_schedulerSates[TrainSoundScheduler] || _schedulerSates[StationSoundScheduler]) ? _soundEffectTime : -1;
-    drawTimer(F("SOUND"), F("EFFECT"), time, 49);
+void DisplayController:: drawTrainSoundTimer() {
+    int time = _schedulerSates[TrainSoundScheduler] ? _trainSoundTime : -1;
+    drawTimer(F("TRN"), F("SND"), time, 50, 4, 56);
+}
+void DisplayController:: drawStationSoundTimer() {
+    int time =  _schedulerSates[StationSoundScheduler] ? _stationSoundTime : -1;
+    drawTimer(F("STN"), F("SND"), time, 50, 68, 56);
 }
 
 void DisplayController::drawSchedulerStates() {
@@ -116,7 +130,7 @@ void DisplayController::drawStatus() {
     u8g2.drawStr(64 - width / 2, 63, _statusMessage.c_str());
 }
 
-void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine) {
+void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine, int8_t xPosition = 0, int8_t width = 128) {
     String time;
     if (timeInSeconds == -1) {
         time = F("-");
@@ -126,7 +140,7 @@ void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeI
         char buffer[10];
         int seconds = timeInSeconds % 60;
         int minutes = timeInSeconds / 60;
-        sprintf(buffer, "%02d:%02d", minutes, seconds);
+        sprintf(buffer, "%d:%02d", minutes, seconds);
         time = buffer;
     }
 
@@ -134,13 +148,13 @@ void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeI
     u8g2.setFontMode(1);
     u8g2.setDrawColor(2);
 
-    u8g2.drawStr(0, yPositionBaseLine - 8, topLabel.c_str());
-    u8g2.drawStr(0, yPositionBaseLine, bottomLabel.c_str());
+    u8g2.drawStr(xPosition, yPositionBaseLine - 8, topLabel.c_str());
+    u8g2.drawStr(xPosition, yPositionBaseLine, bottomLabel.c_str());
 
-    u8g2.setFont(u8g2_font_crox4hb_tr);
+    u8g2.setFont(u8g2_font_crox4hb_tn);
 
-    u8g2_uint_t width  = u8g2.getStrWidth(time.c_str());
-    u8g2.drawStr(128-width, yPositionBaseLine, time.c_str());
+    u8g2_uint_t textWidth  = u8g2.getStrWidth(time.c_str());
+    u8g2.drawStr(xPosition + width - textWidth, yPositionBaseLine, time.c_str());
 }
 
 int DisplayController::freeMemory() {
