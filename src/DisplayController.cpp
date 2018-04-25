@@ -98,36 +98,36 @@ void DisplayController::drawSchedulerStates() {
     u8g2.setDrawColor(1);
 
     if(_schedulerSates[AutomaticDriveScheduler]) {
-        u8g2.drawBox(0, 0, 42, 10);
+        u8g2.drawBox(0, 53, 42, 10);
     } else {
-        u8g2.drawFrame(0, 0, 42, 10);
+        u8g2.drawFrame(0, 53, 42, 10);
     }
 
     if(_schedulerSates[TrainSoundScheduler]) {
-        u8g2.drawBox(43, 0, 42, 10);
+        u8g2.drawBox(43, 53, 42, 10);
     } else {
-        u8g2.drawFrame(43, 0, 42, 10);
+        u8g2.drawFrame(43, 53, 42, 10);
     }
 
     if(_schedulerSates[StationSoundScheduler]) {
-        u8g2.drawBox(86, 0, 42, 10);
+        u8g2.drawBox(86, 53, 42, 10);
     } else {
-        u8g2.drawFrame(86, 0, 42, 10);
+        u8g2.drawFrame(86, 53, 42, 10);
     }
 
     u8g2.setFont(u8g2_font_5x7_tr);
     u8g2.setFontMode(1);
     u8g2.setDrawColor(2);
-    u8g2.drawStr(4,8, "A-DRIVE");
-    u8g2.drawStr(46,8,"TRN-SND");
-    u8g2.drawStr(90,8,"STN-SND");
+    u8g2.drawStr(5,61, "A-DRIVE");
+    u8g2.drawStr(46,61,"TRN-SND");
+    u8g2.drawStr(90,61,"STN-SND");
 }
 
 void DisplayController::drawStatus() {
-    u8g2.drawHLine(0, 54, 128);
+    u8g2.drawHLine(0,0,128);
     u8g2.setFont(u8g2_font_5x7_tr);
     u8g2_uint_t width  = u8g2.getStrWidth(_statusMessage.c_str());
-    u8g2.drawStr(64 - width / 2, 63, _statusMessage.c_str());
+    u8g2.drawStr(64 - width / 2, 9, _statusMessage.c_str());
 }
 
 void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine, int8_t xPosition = 0, int8_t width = 128) {

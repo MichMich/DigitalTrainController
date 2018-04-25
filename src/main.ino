@@ -3,6 +3,7 @@
 #include <Task.h>
 #include "RandomTimeTask.h"
 #include "SoundPlayer.h"
+#include "TrainController.h"
 
 #define BUTTON_1 A1
 #define BUTTON_2 A2
@@ -14,9 +15,10 @@
 
 TaskManager taskManager;
 SoundPlayer soundPlayer;
-RandomTimeTask autoDriveTask(MsToTaskTime(60000), MsToTaskTime(120000));
-RandomTimeTask trainSoundTask(MsToTaskTime(10000), MsToTaskTime(20000));
-RandomTimeTask stationSoundTask(MsToTaskTime(10000), MsToTaskTime(20000));
+TrainController trainController;
+RandomTimeTask autoDriveTask(MsToTaskTime(30000), MsToTaskTime(90000));
+RandomTimeTask trainSoundTask(MsToTaskTime(10000), MsToTaskTime(30000));
+RandomTimeTask stationSoundTask(MsToTaskTime(10000), MsToTaskTime(30000));
 
 Button button1 = Button(A1, false, true, 25);
 Button button2 = Button(A2, false, true, 25);
@@ -37,28 +39,36 @@ void setup() {
   displayController.setStatusMessage(F("BOOTING"), true);
 
   soundPlayer.init();
+  trainController.init();
 
-  displayController.setStatusMessage(F("SETTING VOLUME"), true);
+  trainController.setArrivalCallback([](TrainLocation location) {
+    if (location == TrainLocationEast) {
+      displayController.setStatusMessage(F("ARRIVED AT STATION EAST"));
+    } else {
+      displayController.setStatusMessage(F("ARRIVED AT STATION WEST"));
+    }
+    if (autoDrive) taskManager.StartTask(&autoDriveTask);
+  });
+
   soundPlayer.setVolume(10);
-
-  displayController.setStatusMessage(F("READING SONGCOUNT"), true);
   displayController.setStatusMessage(String("FOUND SOUND FILES: " + String(soundPlayer.getSongCount())), true);
   
   autoDriveTask.setCallback([]() {
-    displayController.setStatusMessage(F("INITIATING AUTO DRIVE"));
+    trainController.startTrain();
+    displayController.setStatusMessage(F("INITIATED AUTO DRIVE"));
     digitalWrite(LED_1, HIGH);
     delay(50);
     digitalWrite(LED_1, LOW);
-    // taskManager.StopTask(&autoDriveTask);
+    taskManager.StopTask(&autoDriveTask);
   });
 
   trainSoundTask.setCallback([]() {
-    int num = 0; //soundPlayer.playRandomSound();
+    int8_t num = trainController.playRandomSound();
     displayController.setStatusMessage(String("PLAYING TRAIN SOUND: " + String(num)));
     digitalWrite(LED_2, HIGH);
     delay(50);
     digitalWrite(LED_2, LOW);
-    // taskManager.StopTask(&autoDriveTask);
+
   });
 
   stationSoundTask.setCallback([]() {
@@ -67,7 +77,7 @@ void setup() {
     digitalWrite(LED_3, HIGH);
     delay(50);
     digitalWrite(LED_3, LOW);
-    // taskManager.StopTask(&autoDriveTask);
+
   });
   
 
@@ -78,6 +88,7 @@ void setup() {
 void loop() {
   checkButtons();
   taskManager.Loop();
+  trainController.handle();
 
   displayController.setAutoDriveTime(autoDriveTask.remainingTimeInSeconds());
   displayController.setTrainSoundTime(trainSoundTask.remainingTimeInSeconds());
@@ -105,6 +116,7 @@ void checkButtons() {
 
   if(button2.wasPressed()) {
     trainSound = !trainSound;
+    trainController.setSoundEnabled(trainSound);
     displayController.setSchedulerState(TrainSoundScheduler, trainSound);
     if (trainSound) {
       taskManager.StartTask(&trainSoundTask);
