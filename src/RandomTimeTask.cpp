@@ -1,9 +1,9 @@
 #include "RandomTimeTask.h"
 
-    RandomTimeTask::RandomTimeTask(uint32_t minimumTime, uint32_t maximumTime) : Task(random(minimumTime, maximumTime))
+    RandomTimeTask::RandomTimeTask(uint32_t time) : Task(MsToTaskTime(time))
     { 
-        _minimumTime = minimumTime;
-        _maximumTime = maximumTime;
+        _minimumTime = time;
+        _maximumTime = time;
     };
 
     unsigned long RandomTimeTask::remainingTime() 
@@ -17,6 +17,12 @@
 
     void RandomTimeTask::setCallback(TaskCallbackFunction callback) {
         _callback = callback;
+    }
+
+    void RandomTimeTask::setMinMaxTime(uint32_t minimumTime, uint32_t maximumTime) {
+        _minimumTime = MsToTaskTime(minimumTime);
+        _maximumTime = MsToTaskTime(maximumTime);
+        setTimeInterval(random(_minimumTime, _maximumTime));
     }
 
     bool RandomTimeTask::OnStart() // optional

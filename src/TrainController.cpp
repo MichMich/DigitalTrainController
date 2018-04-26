@@ -20,6 +20,17 @@ void TrainController::handle()
     checkButtons();
 }
 
+void TrainController::setTrainID(int8_t id)
+{   
+    _trainID = id;
+}
+
+void TrainController::setSpeed(int8_t speed)
+{
+    _speed = speed;
+}
+
+
 void TrainController::startTrain()
 {
     startTrain((_trainLocation != TrainLocationEast) ? TrainLocationEast : TrainLocationWest);
@@ -31,15 +42,15 @@ void TrainController::startTrain(TrainLocation destination)
 
     playSound(TrainSoundWistle);
     
-    byte speed = (destination == TrainLocationEast) ? SPEED : SPEED+128;
-    XpressNet.setLocoDrive(0x00,TRAIN_ID,0x13,speed);
+    byte speed = (destination == TrainLocationEast) ? _speed  : _speed + 128;
+    XpressNet.setLocoDrive(0x00, _trainID, 0x13, speed);
 
     _trainState = TrainStateDriving;
 }
 
 void TrainController::stopTrain()
 {
-    TrainController::XpressNet.setLocoDrive(0x00,TRAIN_ID,0x13,0);
+    TrainController::XpressNet.setLocoDrive(0x00, _trainID, 0x13, 0);
 
     _trainState = TrainStateStopped;
 }
@@ -68,12 +79,12 @@ void TrainController::setSoundEnabled(bool enabled)
 
 void TrainController::startSound(TrainSound sound)
 {
-    if(_soundEnabled) XpressNet.setLocoFunc(0x00,TRAIN_ID,1,sound);
+    if(_soundEnabled) XpressNet.setLocoFunc(0x00, _trainID, 1, sound);
 }
 
 void TrainController::stopSound(TrainSound sound)
 {
-    XpressNet.setLocoFunc(0x00,TRAIN_ID,0,sound);
+    XpressNet.setLocoFunc(0x00, _trainID, 0, sound);
 }
 
 void TrainController::playSound(TrainSound sound)

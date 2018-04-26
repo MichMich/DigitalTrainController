@@ -5,8 +5,6 @@
 #define XNetSRPin 3       //Max485 Busdriver Send/Receive-PIN
 
 #define TRAIN_ID 89
-#define SOUND_DEPART 2
-#define SOUND_ENGINE 1
 #define SPEED 32
 
 #define BUTTON_EAST 12
@@ -38,6 +36,10 @@ class TrainController {
         TrainController();
         void init();
         void handle();
+
+        void setTrainID(int8_t id);
+        void setSpeed(int8_t speed);
+
         void startTrain();
         void startTrain(TrainLocation destination);
         void stopTrain();
@@ -75,6 +77,8 @@ class TrainController {
         XpressNetClass XpressNet;
         TrainArrivedCallbackFunction _arrivalCallback;
 
+        int8_t _trainID = TRAIN_ID;
+        int8_t _speed = SPEED;
         TrainLocation _trainLocation;
         TrainState _trainState;
         TrainSound _lastRandomSound;

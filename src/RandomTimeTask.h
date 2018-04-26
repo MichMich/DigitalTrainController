@@ -6,10 +6,11 @@ class RandomTimeTask : public Task
     public:
         typedef void (*TaskCallbackFunction)(void);
 
-        RandomTimeTask(uint32_t minimumTime, uint32_t maximumTime);
+        RandomTimeTask(uint32_t time);
         unsigned long remainingTime();
         unsigned long remainingTimeInSeconds();
         void setCallback(TaskCallbackFunction callback);
+        void setMinMaxTime(uint32_t minimumTime, uint32_t maximumTime);
 
     private:
         TaskCallbackFunction _callback;

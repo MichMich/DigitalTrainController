@@ -16,9 +16,9 @@
 TaskManager taskManager;
 SoundPlayer soundPlayer;
 TrainController trainController;
-RandomTimeTask autoDriveTask(MsToTaskTime(30000), MsToTaskTime(90000));
-RandomTimeTask trainSoundTask(MsToTaskTime(10000), MsToTaskTime(30000));
-RandomTimeTask stationSoundTask(MsToTaskTime(10000), MsToTaskTime(30000));
+RandomTimeTask autoDriveTask(5000);
+RandomTimeTask trainSoundTask(5000);
+RandomTimeTask stationSoundTask(5000);
 
 Button button1 = Button(A1, false, true, 25);
 Button button2 = Button(A2, false, true, 25);
@@ -41,6 +41,27 @@ void setup() {
   soundPlayer.init();
   trainController.init();
 
+  setCallbacks();  
+  loadSettings();
+
+  displayController.setStatusMessage(String("FOUND SOUND FILES: " + String(soundPlayer.getSongCount())), true);
+  
+  displayController.update();
+}
+
+void loop() {
+  checkButtons();
+  taskManager.Loop();
+  trainController.handle();
+
+  displayController.setAutoDriveTime(autoDriveTask.remainingTimeInSeconds());
+  displayController.setTrainSoundTime(trainSoundTask.remainingTimeInSeconds());
+  displayController.setStationSoundTime(stationSoundTask.remainingTimeInSeconds());
+
+  displayController.update();  
+}
+
+void setCallbacks() {
   trainController.setArrivalCallback([](TrainLocation location) {
     if (location == TrainLocationEast) {
       displayController.setStatusMessage(F("ARRIVED AT STATION EAST"));
@@ -50,12 +71,14 @@ void setup() {
     if (autoDrive) taskManager.StartTask(&autoDriveTask);
   });
 
-  soundPlayer.setVolume(10);
-  displayController.setStatusMessage(String("FOUND SOUND FILES: " + String(soundPlayer.getSongCount())), true);
-  
+
   autoDriveTask.setCallback([]() {
     trainController.startTrain();
-    displayController.setStatusMessage(F("INITIATED AUTO DRIVE"));
+    if (trainController.getTrainLocation() == TrainLocationEast) {
+      displayController.setStatusMessage(F("DEPART FROM STATION EAST"));
+    } else {
+      displayController.setStatusMessage(F("DEPART FROM STATION WEST"));
+    }
     digitalWrite(LED_1, HIGH);
     delay(50);
     digitalWrite(LED_1, LOW);
@@ -79,22 +102,15 @@ void setup() {
     digitalWrite(LED_3, LOW);
 
   });
-  
-
-  //displayController.setStatusMessage(F("SYSTEM READY!"));
-  displayController.update();
 }
 
-void loop() {
-  checkButtons();
-  taskManager.Loop();
-  trainController.handle();
-
-  displayController.setAutoDriveTime(autoDriveTask.remainingTimeInSeconds());
-  displayController.setTrainSoundTime(trainSoundTask.remainingTimeInSeconds());
-  displayController.setStationSoundTime(stationSoundTask.remainingTimeInSeconds());
-
-  displayController.update();  
+void loadSettings() {
+  trainController.setTrainID(TRAIN_ID);
+  trainController.setSpeed(SPEED);
+  soundPlayer.setVolume(10);
+  autoDriveTask.setMinMaxTime(30000, 90000);
+  trainSoundTask.setMinMaxTime(10000, 60000);
+  stationSoundTask.setMinMaxTime(10000, 60000);
 }
 
 void checkButtons() {
