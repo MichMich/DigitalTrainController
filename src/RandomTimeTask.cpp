@@ -1,9 +1,9 @@
 #include "RandomTimeTask.h"
 
-    RandomTimeTask::RandomTimeTask(uint32_t time) : Task(MsToTaskTime(time))
+    RandomTimeTask::RandomTimeTask(uint32_t time) : Task(MsToTaskTime(MsToTaskTime(time)))
     { 
-        _minimumTime = time;
-        _maximumTime = time;
+        _minimumTime = MsToTaskTime(time);
+        _maximumTime = MsToTaskTime(time);
     };
 
     unsigned long RandomTimeTask::remainingTime() 

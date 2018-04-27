@@ -21,6 +21,8 @@ class DisplayController {
         void setStationSoundTime(int time);
         void setStatusMessage(String message, bool instant = false);
 
+        U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2;
+
     private:
         void drawAutoDriveTimer();
         void drawTrainSoundTimer();
@@ -33,7 +35,7 @@ class DisplayController {
 
         boolean _needsUpdate = true;
         boolean _schedulerSates [3] = {false, false, false};
-        U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2;
+        
         int _autoDriveTime = -1;
         int _trainSoundTime = -1;
         int _stationSoundTime = -1;

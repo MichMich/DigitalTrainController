@@ -4,6 +4,7 @@
 #include "RandomTimeTask.h"
 #include "SoundPlayer.h"
 #include "TrainController.h"
+#include "SettingsManager.h"
 
 #define BUTTON_1 A1
 #define BUTTON_2 A2
@@ -13,12 +14,13 @@
 #define LED_2 6
 #define LED_3 7
 
+SettingsManager settingsManager;
 TaskManager taskManager;
 SoundPlayer soundPlayer;
 TrainController trainController;
-RandomTimeTask autoDriveTask(5000);
-RandomTimeTask trainSoundTask(5000);
-RandomTimeTask stationSoundTask(5000);
+RandomTimeTask autoDriveTask(1000);
+RandomTimeTask trainSoundTask(1000);
+RandomTimeTask stationSoundTask(1000);
 
 Button button1 = Button(A1, false, true, 25);
 Button button2 = Button(A2, false, true, 25);
@@ -38,6 +40,8 @@ void setup() {
   displayController.init();
   displayController.setStatusMessage(F("BOOTING"), true);
 
+  settingsManager.setDisplayController(displayController.u8g2);
+
   soundPlayer.init();
   trainController.init();
 
@@ -45,13 +49,12 @@ void setup() {
   loadSettings();
 
   displayController.setStatusMessage(String("FOUND SOUND FILES: " + String(soundPlayer.getSongCount())), true);
-  
-  displayController.update();
 }
 
 void loop() {
   checkButtons();
   taskManager.Loop();
+  
   trainController.handle();
 
   displayController.setAutoDriveTime(autoDriveTask.remainingTimeInSeconds());
@@ -105,20 +108,44 @@ void setCallbacks() {
 }
 
 void loadSettings() {
-  trainController.setTrainID(TRAIN_ID);
-  trainController.setSpeed(SPEED);
-  soundPlayer.setVolume(10);
-  autoDriveTask.setMinMaxTime(30000, 90000);
-  trainSoundTask.setMinMaxTime(10000, 60000);
-  stationSoundTask.setMinMaxTime(10000, 60000);
+  trainController.setTrainID(settingsManager.getSettingFor(SettingTrainID));
+  trainController.setSpeed(settingsManager.getSettingFor(SettingTrainSpeed));
+  
+  soundPlayer.setVolume(settingsManager.getSettingFor(SettingVolume));
+  
+  autoDriveTask.setMinMaxTime((uint32_t) settingsManager.getSettingFor(SettingAutoDriveMinTime) * (uint32_t) 1000, (uint32_t) settingsManager.getSettingFor(SettingAutoDriveMaxTime) * (uint32_t) 1000);
+  trainSoundTask.setMinMaxTime((uint32_t) settingsManager.getSettingFor(SettingTrainSoundMinTime) * (uint32_t) 1000, (uint32_t) settingsManager.getSettingFor(SettingTrainSoundMaxTime) * (uint32_t) 1000);
+  stationSoundTask.setMinMaxTime((uint32_t) settingsManager.getSettingFor(SettingStationSoundMinTime) * (uint32_t) 1000, (uint32_t) settingsManager.getSettingFor(SettingStationSoundMaxTime) * (uint32_t) 1000);
 }
 
-void checkButtons() {
+void checkButtons() 
+{
   button1.read();
   button2.read();
   button3.read();
 
-  if(button1.wasPressed()) {
+  if (button1.pressedFor(3000)) {
+    showSettingsLoadScreen();
+    settingsManager.editAutoDriveSettings();
+    loadSettings();
+    return;
+  }
+
+  if (button2.pressedFor(3000)) {
+    showSettingsLoadScreen();
+    settingsManager.editTrainSoundSettings();
+    loadSettings();
+    return;
+  }
+
+  if (button3.pressedFor(3000)) {
+    showSettingsLoadScreen();
+    settingsManager.editStationSoundSettings();
+    loadSettings();
+    return;
+  }
+
+  if(button1.wasReleased()) {
     autoDrive = !autoDrive;
     displayController.setSchedulerState(AutomaticDriveScheduler, autoDrive);
     if (autoDrive) {
@@ -130,7 +157,7 @@ void checkButtons() {
     }
   }
 
-  if(button2.wasPressed()) {
+  if(button2.wasReleased()) {
     trainSound = !trainSound;
     trainController.setSoundEnabled(trainSound);
     displayController.setSchedulerState(TrainSoundScheduler, trainSound);
@@ -143,7 +170,7 @@ void checkButtons() {
     }
   }
 
-  if(button3.wasPressed()) {
+  if(button3.wasReleased()) {
     stationSound = !stationSound;
     displayController.setSchedulerState(StationSoundScheduler, stationSound);
     if (stationSound) {
@@ -154,4 +181,12 @@ void checkButtons() {
       displayController.setStatusMessage(F("STATION SOUND DISABLED"));
     }
   }
+}
+
+void showSettingsLoadScreen()
+{
+  wdt_reset();
+  wdt_disable();
+  displayController.u8g2.clear();
+  while(!digitalRead(BUTTON_1) || !digitalRead(BUTTON_2) || !digitalRead(BUTTON_3));
 }

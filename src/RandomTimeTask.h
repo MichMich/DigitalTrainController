@@ -12,10 +12,12 @@ class RandomTimeTask : public Task
         void setCallback(TaskCallbackFunction callback);
         void setMinMaxTime(uint32_t minimumTime, uint32_t maximumTime);
 
-    private:
-        TaskCallbackFunction _callback;
         uint32_t _minimumTime;
         uint32_t _maximumTime;
+
+    private:
+        TaskCallbackFunction _callback;
+        
         
         virtual bool OnStart();
         virtual void OnUpdate(uint32_t deltaTime);

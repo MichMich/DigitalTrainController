@@ -11,13 +11,13 @@ DisplayController::DisplayController() : u8g2(U8G2_R0)
 
 void DisplayController::init()
 {
-    u8g2.begin();
+    u8g2.begin(A1, A3, A2);
 }
 
 void DisplayController::update()
 {
     if (_resetStatusTimer > STATUS_RESET_DELAY && _statusMessage != "") {
-        // setStatusMessage("");
+        // setStatusMessage(F("MODELTREINBAAN.NL"));
         setStatusMessage(String(String(freeMemory()) + " BYTES FREE (RAM)" ));
     }
 
