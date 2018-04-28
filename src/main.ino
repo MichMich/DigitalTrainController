@@ -129,21 +129,21 @@ void checkButtons()
   button2.read();
   button3.read();
 
-  if (button1.pressedFor(3000)) {
+  if (button1.pressedFor(3000) && trainController.getTrainState() == TrainStateStopped) {
     showSettingsLoadScreen();
     settingsManager.editAutoDriveSettings();
     loadSettings();
     return;
   }
 
-  if (button2.pressedFor(3000)) {
+  if (button2.pressedFor(3000) && trainController.getTrainState() == TrainStateStopped) {
     showSettingsLoadScreen();
     settingsManager.editTrainSoundSettings();
     loadSettings();
     return;
   }
 
-  if (button3.pressedFor(3000)) {
+  if (button3.pressedFor(3000) && trainController.getTrainState() == TrainStateStopped) {
     showSettingsLoadScreen();
     settingsManager.editStationSoundSettings();
     loadSettings();

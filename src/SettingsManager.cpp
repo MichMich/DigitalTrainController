@@ -36,64 +36,68 @@ void SettingsManager::writeDefaults()
 
 void SettingsManager::editAutoDriveSettings()
 {
-    u8g2.setFont(u8g2_font_6x10_tr);
+    u8g2.setFont(/*u8g2_font_6x10_tr*/ u8g2_font_5x7_tr);
     u8g2.setFontRefHeightAll();
-    uint8_t input = u8g2.userInterfaceSelectionList(String(F("AUTO DRIVE SETTINGS")).c_str(), 0, String(F("TRAIN ID\nTRAIN SPEED\nMIN DEPATURE TIME\nMAX DEPARTURE TIME\nSAVE & EXIT")).c_str());
-    switch (input) {
-        case 1:
-            userInputForSetting(SettingTrainID, String(F("TRAIN ID")).c_str(), "ID ", 0, 255, 3, "");
-            editAutoDriveSettings();
-            break;
-        case 2:
-            userInputForSetting(SettingTrainSpeed, String(F("TRAIN SPEED")).c_str(), "", 1, 127, 3, "");
-            editAutoDriveSettings();
-            break;
-        case 3:
-            userInputForSetting(SettingAutoDriveMinTime, String(F("DEPATURE TIME")).c_str(), "MIN ", 1, getSettingFor(SettingAutoDriveMaxTime), 3, " S");
-            editAutoDriveSettings();
-            break;
-        case 4:
-            userInputForSetting(SettingAutoDriveMaxTime, String(F("DEPARTURE TIME")).c_str(), "MAX ", getSettingFor(SettingAutoDriveMinTime), 255, 3, " S");
-            editAutoDriveSettings();
-            break;
-    }
+
+    uint8_t input;
+    do {
+        input = u8g2.userInterfaceSelectionList(String(F("AUTO DRIVE SETTINGS")).c_str(), 0, String(F("TRAIN ID\nTRAIN SPEED\nMIN DEPATURE TIME\nMAX DEPARTURE TIME\nSAVE & EXIT")).c_str());
+        switch (input) {
+            case 1:
+                userInputForSetting(SettingTrainID, String(F("TRAIN ID")).c_str(), "ID ", 0, 255, 3, "");
+                break;
+            case 2:
+                userInputForSetting(SettingTrainSpeed, String(F("TRAIN SPEED")).c_str(), "", 1, 127, 3, "");
+                break;
+            case 3:
+                userInputForSetting(SettingAutoDriveMinTime, String(F("DEPATURE TIME")).c_str(), String(F("MIN ")).c_str(), 1, getSettingFor(SettingAutoDriveMaxTime), 3, " S");
+                break;
+            case 4:
+                userInputForSetting(SettingAutoDriveMaxTime, String(F("DEPARTURE TIME")).c_str(), String(F("MAX ")).c_str(), getSettingFor(SettingAutoDriveMinTime), 255, 3, " S");
+                break;
+        };
+    } while (input != 5);
 }
 
 void SettingsManager::editTrainSoundSettings()
 {
-    u8g2.setFont(u8g2_font_6x10_tr);
+    u8g2.setFont(/*u8g2_font_6x10_tr*/ u8g2_font_5x7_tr);
     u8g2.setFontRefHeightAll();
-    uint8_t input = u8g2.userInterfaceSelectionList(String(F("TRAIN SOUND SETTINGS")).c_str(), 0, String(F("MIN PAUSE TIME\nMAX PAUSE TIME\nSAVE & EXIT")).c_str());
-    switch (input) {
-        case 1:
-            userInputForSetting(SettingTrainSoundMinTime, String(F("TRAIN SOUND TIME")).c_str(), "MIN ", 1, getSettingFor(SettingTrainSoundMaxTime), 3, " S");
-            editTrainSoundSettings();
-            break;
-        case 2:
-            userInputForSetting(SettingTrainSoundMaxTime, String(F("TRAIN SOUND TIME")).c_str(), "MAX ", getSettingFor(SettingTrainSoundMinTime), 255, 3, " S");
-            editTrainSoundSettings();
-            break;
-    }
+
+    uint8_t input;     
+    do {
+        input = u8g2.userInterfaceSelectionList(String(F("TRAIN SOUND SETTINGS")).c_str(), 0, String(F("MIN PAUSE TIME\nMAX PAUSE TIME\nSAVE & EXIT")).c_str());
+        switch (input) {
+            case 1:
+                userInputForSetting(SettingTrainSoundMinTime, String(F("TRAIN SOUND TIME")).c_str(), String(F("MIN ")).c_str(), 1, getSettingFor(SettingTrainSoundMaxTime), 3, " S");
+                break;
+            case 2:
+                userInputForSetting(SettingTrainSoundMaxTime, String(F("TRAIN SOUND TIME")).c_str(), String(F("MAX ")).c_str(), getSettingFor(SettingTrainSoundMinTime), 255, 3, " S");
+                break;
+        };
+    } while (input != 3);
+
 }
 void SettingsManager::editStationSoundSettings()
 {
-    u8g2.setFont(u8g2_font_6x10_tr);
+    u8g2.setFont(/*u8g2_font_6x10_tr*/ u8g2_font_5x7_tr);
     u8g2.setFontRefHeightAll();
-    uint8_t input = u8g2.userInterfaceSelectionList(String(F("STATION SOUND SETTINGS")).c_str(), 0, String(F("VOLUME\nMIN PAUSE TIME\nMAX PAUSE TIME\nSAVE & EXIT")).c_str());
-    switch (input) {
-        case 1:
-            userInputForSetting(SettingVolume, String(F("VOLUME")).c_str(), "", 0, 30, 2, "");
-            editStationSoundSettings();
-            break;
-        case 2:
-            userInputForSetting(SettingStationSoundMinTime, String(F("STATION SOUND TIME")).c_str(), "MIN ", 1, getSettingFor(SettingStationSoundMaxTime), 3, " S");
-            editStationSoundSettings();
-            break;
-        case 3:
-            userInputForSetting(SettingStationSoundMaxTime, String(F("STATION SOUND TIME")).c_str(), "MAX ", getSettingFor(SettingStationSoundMinTime), 255, 3, " S");
-            editStationSoundSettings();
-            break;
-    }
+
+    uint8_t input;
+    do {
+        input = u8g2.userInterfaceSelectionList(String(F("STATION SOUND SETTINGS")).c_str(), 0, String(F("VOLUME\nMIN PAUSE TIME\nMAX PAUSE TIME\nSAVE & EXIT")).c_str());
+        switch (input) {
+            case 1:
+                userInputForSetting(SettingVolume, String(F("VOLUME")).c_str(), "", 0, 30, 2, "");
+                break;
+            case 2:
+                userInputForSetting(SettingStationSoundMinTime, String(F("STATION SOUND TIME")).c_str(), String(F("MIN ")).c_str(), 1, getSettingFor(SettingStationSoundMaxTime), 3, " S");
+                break;
+            case 3:
+                userInputForSetting(SettingStationSoundMaxTime, String(F("STATION SOUND TIME")).c_str(), String(F("MAX ")).c_str(), getSettingFor(SettingStationSoundMinTime), 255, 3, " S");
+                break;
+        };
+    } while (input != 4);
 }
 
 void SettingsManager::setDisplayController(U8G2 &displayController)

@@ -16,9 +16,15 @@ void DisplayController::init()
 
 void DisplayController::update()
 {
-    if (_resetStatusTimer > STATUS_RESET_DELAY && _statusMessage != "") {
-        // setStatusMessage(F("MODELTREINBAAN.NL"));
-        setStatusMessage(String(String(freeMemory()) + " BYTES FREE (RAM)" ));
+    if (_resetStatusTimer > STATUS_RESET_DELAY && _statusMessage != F("MODELTREINBAAN.NL")) {
+        setStatusMessage(F("MODELTREINBAAN.NL"));
+        // setStatusMessage(String(String(freeMemory()) + " BYTES FREE (RAM)" ));
+    }
+
+    if (_blinkTimer > BLINK_SPEED) {
+        _blinkTimer = 0;
+        _blink = !_blink;
+        _needsUpdate = true;
     }
 
     if (_needsUpdate) {
@@ -30,7 +36,7 @@ void DisplayController::update()
             drawStationSoundTimer();
             drawSchedulerStates();
             drawStatus();
-            if (_trainState == TrainStateDriving) drawDriveIndicator(64, 17, 60, 8);
+            if (_trainState == TrainStateDriving) drawDriveIndicator(67, 17, 57, 8);
         } while ( u8g2.nextPage() );
         _needsUpdate = false;
     }
@@ -176,11 +182,19 @@ void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeI
 void DisplayController::drawDriveIndicator(int8_t x, int8_t y, int8_t w, int8_t h)
 {
     u8g2.setDrawColor(0);
-    u8g2.drawBox(x, y, h, h);
-    u8g2.drawBox(x + w - h, y, h, h);
+    u8g2.drawBox(x, y + 1, h - 2, h - 2);
+    u8g2.drawBox(x + w - h + 2, y + 1, h - 2, h - 2);
 
-    // u8g2.drawBox(x, y + h/2 - 1, w, 2);
-    // u8g2.drawTriangle(x + w / 2 - 4, y, x + w / 2 + 4, y + h / 2, x + w / 2 - 4, y + h);
+    u8g2.drawBox(x, y + h/2 - 1, w / 2 - 6, 2);
+    u8g2.drawBox(x + w / 2 + 6, y + h/2 - 1, w / 2 - 6, 2);
+
+    if (_blink) {
+        if (_trainLocation == TrainLocationEast) {
+            u8g2.drawTriangle(x + w / 2 - 4, y-1,      x + w / 2 + 4, y + h / 2 - 1,      x + w / 2 - 4, y + h);
+        } else {
+            u8g2.drawTriangle(x + w / 2 + 4, y-1,      x + w / 2 - 4, y + h / 2 - 1,      x + w / 2 + 4, y + h);
+        }
+    }
 }
 
 int DisplayController::freeMemory() 

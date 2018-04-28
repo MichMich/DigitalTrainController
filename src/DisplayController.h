@@ -5,6 +5,8 @@
 
 #define STATUS_RESET_DELAY 5000
 
+#define BLINK_SPEED 500
+
 enum Scheduler {
     AutomaticDriveScheduler = 0,
     TrainSoundScheduler = 1,
@@ -44,11 +46,14 @@ class DisplayController {
         int _trainSoundTime = -1;
         int _stationSoundTime = -1;
 
+        bool _blink = true;
+
         TrainLocation _trainLocation;
         TrainState _trainState;
 
         String _statusMessage;
         elapsedMillis _resetStatusTimer;
+        elapsedMillis _blinkTimer;
         
 
 };
