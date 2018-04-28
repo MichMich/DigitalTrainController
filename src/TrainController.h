@@ -1,6 +1,9 @@
 #include <Arduino.h>
 #include <XpressNet.h>
 
+#ifndef TrainController_h
+#define TrainController_h
+
 #define XNetAddress 31    //Adresse im XpressNet
 #define XNetSRPin 3       //Max485 Busdriver Send/Receive-PIN
 
@@ -15,9 +18,9 @@ enum TrainLocation {
     TrainLocationWest
 };
 
-enum TrainState {
-    TrainStateDriving,
-    TrainStateStopped
+enum TrainState  : int8_t {
+    TrainStateDriving = 1,
+    TrainStateStopped = 2
 };
 
 enum TrainSound : int8_t {
@@ -87,3 +90,5 @@ class TrainController {
         void checkButtons();
         TrainSound getRandomSound();
 };
+
+#endif

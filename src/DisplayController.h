@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <U8g2lib.h>
 #include <elapsedMillis.h>
+#include "TrainController.h"
 
 #define STATUS_RESET_DELAY 5000
 
@@ -9,6 +10,7 @@ enum Scheduler {
     TrainSoundScheduler = 1,
     StationSoundScheduler = 2
 };
+
 
 class DisplayController {
     public:
@@ -20,6 +22,7 @@ class DisplayController {
         void setTrainSoundTime(int time);
         void setStationSoundTime(int time);
         void setStatusMessage(String message, bool instant = false);
+        void setTrainStateAndLocation(TrainState state, TrainLocation location);
 
         U8G2_SSD1306_128X64_NONAME_1_HW_I2C u8g2;
 
@@ -30,6 +33,7 @@ class DisplayController {
         void drawSchedulerStates();
         void drawStatus();
         void drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine, int8_t xPosition = 0, int8_t width = 128);
+        void drawDriveIndicator(int8_t x, int8_t y, int8_t w, int8_t h);
 
         int freeMemory();
 
@@ -39,6 +43,10 @@ class DisplayController {
         int _autoDriveTime = -1;
         int _trainSoundTime = -1;
         int _stationSoundTime = -1;
+
+        TrainLocation _trainLocation;
+        TrainState _trainState;
+
         String _statusMessage;
         elapsedMillis _resetStatusTimer;
         

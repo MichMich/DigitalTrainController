@@ -60,8 +60,40 @@ void loop() {
   displayController.setAutoDriveTime(autoDriveTask.remainingTimeInSeconds());
   displayController.setTrainSoundTime(trainSoundTask.remainingTimeInSeconds());
   displayController.setStationSoundTime(stationSoundTask.remainingTimeInSeconds());
+  displayController.setTrainStateAndLocation(trainController.getTrainState(), trainController.getTrainLocation());
 
   displayController.update();  
+}
+
+void autoDriveDepart()
+{
+  trainController.startTrain();
+  if (trainController.getTrainLocation() == TrainLocationEast) {
+    displayController.setStatusMessage(F("DEPART FROM STATION EAST"));
+  } else {
+    displayController.setStatusMessage(F("DEPART FROM STATION WEST"));
+  }
+  digitalWrite(LED_1, HIGH);
+  delay(10);
+  digitalWrite(LED_1, LOW);
+}
+
+void trainSoundPlay()
+{
+  int8_t num = trainController.playRandomSound();
+  displayController.setStatusMessage(String("PLAYING TRAIN SOUND: " + String(num)));
+  digitalWrite(LED_2, HIGH);
+  delay(10);
+  digitalWrite(LED_2, LOW);
+}
+
+void stationSoundPlay()
+{
+  int num = soundPlayer.playRandomSound();
+  displayController.setStatusMessage(String("PLAYING STATION SOUND: " + String(num)));
+  digitalWrite(LED_3, HIGH);
+  delay(10);
+  digitalWrite(LED_3, LOW);
 }
 
 void setCallbacks() {
@@ -75,36 +107,9 @@ void setCallbacks() {
   });
 
 
-  autoDriveTask.setCallback([]() {
-    trainController.startTrain();
-    if (trainController.getTrainLocation() == TrainLocationEast) {
-      displayController.setStatusMessage(F("DEPART FROM STATION EAST"));
-    } else {
-      displayController.setStatusMessage(F("DEPART FROM STATION WEST"));
-    }
-    digitalWrite(LED_1, HIGH);
-    delay(50);
-    digitalWrite(LED_1, LOW);
-    taskManager.StopTask(&autoDriveTask);
-  });
-
-  trainSoundTask.setCallback([]() {
-    int8_t num = trainController.playRandomSound();
-    displayController.setStatusMessage(String("PLAYING TRAIN SOUND: " + String(num)));
-    digitalWrite(LED_2, HIGH);
-    delay(50);
-    digitalWrite(LED_2, LOW);
-
-  });
-
-  stationSoundTask.setCallback([]() {
-    int num = soundPlayer.playRandomSound();
-    displayController.setStatusMessage(String("PLAYING STATION SOUND: " + String(num)));
-    digitalWrite(LED_3, HIGH);
-    delay(50);
-    digitalWrite(LED_3, LOW);
-
-  });
+  autoDriveTask.setCallback(autoDriveDepart);
+  trainSoundTask.setCallback(trainSoundPlay);
+  stationSoundTask.setCallback(stationSoundPlay);
 }
 
 void loadSettings() {
@@ -149,7 +154,7 @@ void checkButtons()
     autoDrive = !autoDrive;
     displayController.setSchedulerState(AutomaticDriveScheduler, autoDrive);
     if (autoDrive) {
-      taskManager.StartTask(&autoDriveTask);
+      autoDriveDepart();
       displayController.setStatusMessage(F("AUTO DRIVE ENABLED"));
     } else {
       taskManager.StopTask(&autoDriveTask);
@@ -162,6 +167,7 @@ void checkButtons()
     trainController.setSoundEnabled(trainSound);
     displayController.setSchedulerState(TrainSoundScheduler, trainSound);
     if (trainSound) {
+      trainSoundPlay();
       taskManager.StartTask(&trainSoundTask);
       displayController.setStatusMessage(F("TRAIN SOUND ENABLED"));
     } else {
@@ -174,6 +180,7 @@ void checkButtons()
     stationSound = !stationSound;
     displayController.setSchedulerState(StationSoundScheduler, stationSound);
     if (stationSound) {
+      stationSoundPlay();
       taskManager.StartTask(&stationSoundTask);
       displayController.setStatusMessage(F("STATION SOUND ENABLED"));
     } else {
@@ -187,6 +194,20 @@ void showSettingsLoadScreen()
 {
   wdt_reset();
   wdt_disable();
+
+  autoDrive = false;
+  displayController.setSchedulerState(AutomaticDriveScheduler, autoDrive);
+  taskManager.StopTask(&autoDriveTask);
+
+  trainSound = false;
+  trainController.setSoundEnabled(trainSound);
+  displayController.setSchedulerState(TrainSoundScheduler, trainSound);
+  taskManager.StopTask(&trainSoundTask);
+
+  stationSound = false;
+  displayController.setSchedulerState(StationSoundScheduler, stationSound);
+  taskManager.StopTask(&stationSoundTask);
+
   displayController.u8g2.clear();
   while(!digitalRead(BUTTON_1) || !digitalRead(BUTTON_2) || !digitalRead(BUTTON_3));
 }

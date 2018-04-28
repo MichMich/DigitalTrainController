@@ -36,7 +36,7 @@ void SettingsManager::writeDefaults()
 
 void SettingsManager::editAutoDriveSettings()
 {
-    u8g2.setFont(u8g2_font_5x7_tr);
+    u8g2.setFont(u8g2_font_6x10_tr);
     u8g2.setFontRefHeightAll();
     uint8_t input = u8g2.userInterfaceSelectionList(String(F("AUTO DRIVE SETTINGS")).c_str(), 0, String(F("TRAIN ID\nTRAIN SPEED\nMIN DEPATURE TIME\nMAX DEPARTURE TIME\nSAVE & EXIT")).c_str());
     switch (input) {
@@ -61,7 +61,7 @@ void SettingsManager::editAutoDriveSettings()
 
 void SettingsManager::editTrainSoundSettings()
 {
-    u8g2.setFont(u8g2_font_5x7_tr);
+    u8g2.setFont(u8g2_font_6x10_tr);
     u8g2.setFontRefHeightAll();
     uint8_t input = u8g2.userInterfaceSelectionList(String(F("TRAIN SOUND SETTINGS")).c_str(), 0, String(F("MIN PAUSE TIME\nMAX PAUSE TIME\nSAVE & EXIT")).c_str());
     switch (input) {
@@ -77,7 +77,7 @@ void SettingsManager::editTrainSoundSettings()
 }
 void SettingsManager::editStationSoundSettings()
 {
-    u8g2.setFont(u8g2_font_5x7_tr);
+    u8g2.setFont(u8g2_font_6x10_tr);
     u8g2.setFontRefHeightAll();
     uint8_t input = u8g2.userInterfaceSelectionList(String(F("STATION SOUND SETTINGS")).c_str(), 0, String(F("VOLUME\nMIN PAUSE TIME\nMAX PAUSE TIME\nSAVE & EXIT")).c_str());
     switch (input) {

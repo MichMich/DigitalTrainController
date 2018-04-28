@@ -12,6 +12,8 @@ void TrainController::init()
     pinMode(LED_BUILTIN, OUTPUT);
 
     XpressNet.start(XNetAddress, XNetSRPin);    //Initialisierung XNet-Bus
+
+    _trainState = TrainStateStopped;
 }
 
 void TrainController::handle()

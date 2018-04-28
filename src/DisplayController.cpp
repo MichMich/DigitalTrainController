@@ -24,11 +24,13 @@ void DisplayController::update()
     if (_needsUpdate) {
         u8g2.firstPage();
         do {
+            u8g2.setDrawColor(2);
             drawAutoDriveTimer();
             drawTrainSoundTimer();
             drawStationSoundTimer();
             drawSchedulerStates();
             drawStatus();
+            if (_trainState == TrainStateDriving) drawDriveIndicator(64, 17, 60, 8);
         } while ( u8g2.nextPage() );
         _needsUpdate = false;
     }
@@ -77,21 +79,35 @@ void DisplayController::setStatusMessage(String message, bool instant = false)
     }
 }
 
+void DisplayController::setTrainStateAndLocation(TrainState state, TrainLocation location)
+{
+    if (state != _trainState || location != _trainLocation) {
+        _trainState = state;
+        _trainLocation = location;
+        _needsUpdate = true;
+    }
+}
+
 // Private
 
 void DisplayController:: drawAutoDriveTimer() {
-    u8g2.drawBox(0, 11, 128, 21);
-    int time = (_schedulerSates[AutomaticDriveScheduler]) ? _autoDriveTime : -1;
+    u8g2.drawBox(0, 11, 128, 20);
+    int time;
+    if (_trainState == TrainStateDriving) {
+        time = 0;
+    } else {
+        time = (_schedulerSates[AutomaticDriveScheduler]) ? _autoDriveTime : -1;
+    }
     drawTimer(F("AUTO"), F("DRIVE"), time, 28, 4, 120);
 }
 
 void DisplayController:: drawTrainSoundTimer() {
     int time = _schedulerSates[TrainSoundScheduler] ? _trainSoundTime : -1;
-    drawTimer(F("TRN"), F("SND"), time, 50, 4, 56);
+    drawTimer(F("TRN"), F("SND"), time, 49, 4, 56);
 }
 void DisplayController:: drawStationSoundTimer() {
     int time =  _schedulerSates[StationSoundScheduler] ? _stationSoundTime : -1;
-    drawTimer(F("STN"), F("SND"), time, 50, 68, 56);
+    drawTimer(F("STN"), F("SND"), time, 49, 68, 56);
 }
 
 void DisplayController::drawSchedulerStates() {
@@ -133,9 +149,9 @@ void DisplayController::drawStatus() {
 void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeInSeconds, int8_t yPositionBaseLine, int8_t xPosition = 0, int8_t width = 128) {
     String time;
     if (timeInSeconds == -1) {
-        time = F("-");
-    // } else if (timeInSeconds == 0) {
-    //     time = F("NOW");
+        time = "-";
+    } else if (timeInSeconds == 0) {
+        time = "";
     } else {
         char buffer[10];
         int seconds = timeInSeconds % 60;
@@ -157,7 +173,18 @@ void DisplayController::drawTimer(String topLabel, String bottomLabel, int timeI
     u8g2.drawStr(xPosition + width - textWidth, yPositionBaseLine, time.c_str());
 }
 
-int DisplayController::freeMemory() {
+void DisplayController::drawDriveIndicator(int8_t x, int8_t y, int8_t w, int8_t h)
+{
+    u8g2.setDrawColor(0);
+    u8g2.drawBox(x, y, h, h);
+    u8g2.drawBox(x + w - h, y, h, h);
+
+    // u8g2.drawBox(x, y + h/2 - 1, w, 2);
+    // u8g2.drawTriangle(x + w / 2 - 4, y, x + w / 2 + 4, y + h / 2, x + w / 2 - 4, y + h);
+}
+
+int DisplayController::freeMemory() 
+{
   int free_memory;
 
   if((int)__brkval == 0)
