@@ -4,7 +4,7 @@ extern unsigned int __bss_end;
 extern unsigned int __heap_start;
 extern void *__brkval;
 
-DisplayController::DisplayController() : u8g2(U8G2_R0)
+DisplayController::DisplayController() : u8g2(U8G2_R2)
 {
 
 }
