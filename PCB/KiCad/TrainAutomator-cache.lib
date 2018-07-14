@@ -1,0 +1,385 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# TrainAutomator-rescue:+12V
+#
+DEF TrainAutomator-rescue:+12V #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "TrainAutomator-rescue:+12V" 0 140 50 H V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+DRAW
+P 2 0 1 0 -30 50 0 100 N
+P 2 0 1 0 0 0 0 100 N
+P 2 0 1 0 0 100 30 50 N
+X +12V 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:+5V
+#
+DEF TrainAutomator-rescue:+5V #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -150 50 H I C CNN
+F1 "TrainAutomator-rescue:+5V" 0 140 50 H V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+DRAW
+P 2 0 1 0 -30 50 0 100 N
+P 2 0 1 0 0 0 0 100 N
+P 2 0 1 0 0 100 30 50 N
+X +5V 1 0 0 0 U 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:ARDUINO_NANO
+#
+DEF TrainAutomator-rescue:ARDUINO_NANO ARDUINO 0 40 N Y 1 F N
+F0 "ARDUINO" 0 850 70 H V C CNN
+F1 "TrainAutomator-rescue:ARDUINO_NANO" 0 0 70 V V C CNN
+F2 "" 0 0 60 H V C CNN
+F3 "" 0 0 60 H V C CNN
+DRAW
+S -300 800 300 -800 0 1 0 N
+X TX 1 -600 750 300 R 60 60 0 1 O
+X D7 10 -600 -150 300 R 60 60 0 1 B
+X D8 11 -600 -250 300 R 60 60 0 1 B
+X D9 12 -600 -350 300 R 60 60 0 1 B
+X D10 13 -600 -450 300 R 60 60 0 1 B
+X D11 14 -600 -550 300 R 60 60 0 1 B
+X D12 15 -600 -650 300 R 60 60 0 1 B
+X D13 16 600 -650 300 L 60 60 0 1 B
+X 3V3 17 600 -550 300 L 60 60 0 1 w
+X VREF 18 600 -450 300 L 60 60 0 1 O
+X A0 19 600 -350 300 L 60 60 0 1 I
+X RX 2 -600 650 300 R 60 60 0 1 I
+X A1 20 600 -250 300 L 60 60 0 1 I
+X A2 21 600 -150 300 L 60 60 0 1 I
+X A3 22 600 -50 300 L 60 60 0 1 I
+X A4 23 600 50 300 L 60 60 0 1 I
+X A5 24 600 150 300 L 60 60 0 1 I
+X A6 25 600 250 300 L 60 60 0 1 I
+X A7 26 600 350 300 L 60 60 0 1 I
+X 5V 27 600 450 300 L 60 60 0 1 w
+X RST 28 600 550 300 L 60 60 0 1 I
+X GND 29 600 650 300 L 60 60 0 1 w
+X RST 3 -600 550 300 R 60 60 0 1 I
+X VIN 30 600 750 300 L 60 60 0 1 W
+X GND 4 -600 450 300 R 60 60 0 1 w
+X D2 5 -600 350 300 R 60 60 0 1 B
+X D3 6 -600 250 300 R 60 60 0 1 B
+X D4 7 -600 150 300 R 60 60 0 1 B
+X D5 8 -600 50 300 R 60 60 0 1 B
+X D6 9 -600 -50 300 R 60 60 0 1 B
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:CONN_01X03
+#
+DEF TrainAutomator-rescue:CONN_01X03 P 0 40 Y N 1 F N
+F0 "P" 0 200 50 H V C CNN
+F1 "TrainAutomator-rescue:CONN_01X03" 100 0 50 V V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+$FPLIST
+ Pin_Header_Straight_1X03
+ Pin_Header_Angled_1X03
+ Socket_Strip_Straight_1X03
+ Socket_Strip_Angled_1X03
+$ENDFPLIST
+DRAW
+S -50 -95 10 -105 0 1 0 N
+S -50 5 10 -5 0 1 0 N
+S -50 105 10 95 0 1 0 N
+S -50 150 50 -150 0 1 0 N
+X P1 1 -200 100 150 R 50 50 1 1 P
+X P2 2 -200 0 150 R 50 50 1 1 P
+X P3 3 -200 -100 150 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:CONN_01X04
+#
+DEF TrainAutomator-rescue:CONN_01X04 P 0 40 Y N 1 F N
+F0 "P" 0 250 50 H V C CNN
+F1 "TrainAutomator-rescue:CONN_01X04" 100 0 50 V V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+$FPLIST
+ Pin_Header_Straight_1X04
+ Pin_Header_Angled_1X04
+ Socket_Strip_Straight_1X04
+ Socket_Strip_Angled_1X04
+$ENDFPLIST
+DRAW
+S -50 -145 10 -155 0 1 0 N
+S -50 -45 10 -55 0 1 0 N
+S -50 55 10 45 0 1 0 N
+S -50 155 10 145 0 1 0 N
+S -50 200 50 -200 0 1 0 N
+X P1 1 -200 150 150 R 50 50 1 1 P
+X P2 2 -200 50 150 R 50 50 1 1 P
+X P3 3 -200 -50 150 R 50 50 1 1 P
+X P4 4 -200 -150 150 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:C_Small
+#
+DEF TrainAutomator-rescue:C_Small C 0 10 N N 1 F N
+F0 "C" 10 70 50 H V L CNN
+F1 "TrainAutomator-rescue:C_Small" 10 -80 50 H V L CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+$FPLIST
+ C?
+ C_????_*
+ C_????
+ SMD*_c
+ Capacitor*
+$ENDFPLIST
+DRAW
+P 2 0 1 13 -60 -20 60 -20 N
+P 2 0 1 12 -60 20 60 20 N
+X ~ 1 0 100 80 D 50 50 1 1 P
+X ~ 2 0 -100 80 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:DFPLAYER_MINI
+#
+DEF TrainAutomator-rescue:DFPLAYER_MINI U 0 40 Y Y 1 F N
+F0 "U" 0 -250 60 H V C CNN
+F1 "TrainAutomator-rescue:DFPLAYER_MINI" 0 450 60 H V C CNN
+F2 "" 0 0 60 H V C CNN
+F3 "" 0 0 60 H V C CNN
+DRAW
+S -400 -400 400 500 0 1 0 N
+X VCC 1 -600 350 200 R 50 50 1 1 I
+X GND 10 600 -250 200 L 50 50 1 1 I
+X IO_2 11 600 -150 200 L 50 50 1 1 I
+X ADKEY_1 12 600 -50 200 L 50 50 1 1 I
+X ADKEY_2 13 600 50 200 L 50 50 1 1 I
+X USB+ 14 600 150 200 L 50 50 1 1 I
+X USB- 15 600 250 200 L 50 50 1 1 I
+X BUSY 16 600 350 200 L 50 50 1 1 I
+X RX 2 -600 250 200 R 50 50 1 1 I
+X TX 3 -600 150 200 R 50 50 1 1 I
+X DAC_R 4 -600 50 200 R 50 50 1 1 I
+X DAC_L 5 -600 -50 200 R 50 50 1 1 I
+X SPK_1 6 -600 -150 200 R 50 50 1 1 I
+X GND 7 -600 -250 200 R 50 50 1 1 I
+X SPK_2 8 -600 -350 200 R 50 50 1 1 I
+X IO_1 9 600 -350 200 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:GND
+#
+DEF TrainAutomator-rescue:GND #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "TrainAutomator-rescue:GND" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:Jumper_NC_Dual
+#
+DEF TrainAutomator-rescue:Jumper_NC_Dual JP 0 30 Y N 1 F N
+F0 "JP" 50 -100 50 H V L CNN
+F1 "TrainAutomator-rescue:Jumper_NC_Dual" 0 100 50 H V C BNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+DRAW
+A -60 10 64 386 1413 0 1 0 N -10 50 -110 50
+A 60 10 64 386 1413 0 1 0 N 110 50 10 50
+C -120 0 35 0 1 0 N
+C 0 0 36 0 1 0 N
+C 120 0 35 0 1 0 N
+X 1 1 -250 0 95 R 50 50 0 1 P
+X 2 2 0 -100 60 U 50 50 0 1 P
+X 3 3 250 0 95 L 50 50 0 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:Jumper_NC_Small
+#
+DEF TrainAutomator-rescue:Jumper_NC_Small JP 0 30 N N 1 F N
+F0 "JP" 0 80 50 H V C CNN
+F1 "TrainAutomator-rescue:Jumper_NC_Small" 10 -60 50 H V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+DRAW
+A 0 -10 57 450 1350 0 1 0 N 40 30 -40 30
+C -40 0 20 0 1 0 N
+C 40 0 20 0 1 0 N
+X 1 1 -100 0 40 R 50 50 0 1 P
+X 2 2 100 0 40 L 50 50 0 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:LED
+#
+DEF TrainAutomator-rescue:LED D 0 40 Y N 1 F N
+F0 "D" 0 100 50 H V C CNN
+F1 "TrainAutomator-rescue:LED" 0 -100 50 H V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+$FPLIST
+ LED*
+$ENDFPLIST
+DRAW
+P 2 0 1 8 -50 -50 -50 50 N
+P 2 0 1 0 -50 0 50 0 N
+P 4 0 1 8 50 -50 50 50 -50 0 50 -50 N
+P 5 0 1 0 -120 -30 -180 -90 -150 -90 -180 -90 -180 -60 N
+P 5 0 1 0 -70 -30 -130 -90 -100 -90 -130 -90 -130 -60 N
+X K 1 -150 0 100 R 50 50 1 1 P
+X A 2 150 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:LM7805
+#
+DEF TrainAutomator-rescue:LM7805 U 0 30 N Y 1 F N
+F0 "U" 150 -196 50 H V C CNN
+F1 "TrainAutomator-rescue:LM7805" 0 200 50 H V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+DRAW
+S -200 -150 200 150 0 1 0 N
+X VI 1 -400 50 200 R 40 40 1 1 I
+X GND 2 0 -250 100 U 40 40 1 1 I
+X VO 3 400 50 200 L 40 40 1 1 w
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:R
+#
+DEF TrainAutomator-rescue:R R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "TrainAutomator-rescue:R" 0 0 50 V V C CNN
+F2 "" -70 0 50 V V C CNN
+F3 "" 0 0 50 H V C CNN
+$FPLIST
+ R_*
+ Resistor_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:RJ12
+#
+DEF TrainAutomator-rescue:RJ12 J 0 40 Y Y 1 F N
+F0 "J" 200 500 50 H V C CNN
+F1 "TrainAutomator-rescue:RJ12" -150 500 50 H V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+DRAW
+S 350 -300 -300 450 0 1 0 N
+P 3 0 1 0 -100 250 -100 200 -100 200 N
+P 3 0 1 0 -50 250 -50 200 -50 200 N
+P 3 0 1 0 0 250 0 200 0 200 N
+P 3 0 1 0 50 250 50 200 50 200 N
+P 3 0 1 0 100 250 100 200 100 200 N
+P 3 0 1 0 150 200 150 250 150 250 N
+P 14 0 1 0 -200 250 250 250 250 -150 150 -150 150 -200 100 -200 100 -250 -50 -250 -50 -200 -100 -200 -100 -150 -200 -150 -200 250 -200 250 N
+X ~ 1 -200 -450 150 U 50 50 1 1 P
+X ~ 2 -100 -450 150 U 50 50 1 1 P
+X ~ 3 0 -450 150 U 50 50 1 1 P
+X ~ 4 100 -450 150 U 50 50 1 1 P
+X ~ 5 200 -450 150 U 50 50 1 1 P
+X ~ 6 300 -450 150 U 50 50 1 1 P
+X SHIELD_1 7 500 400 150 L 50 30 1 1 P
+X SHIELD_2 8 500 300 150 L 50 30 1 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:SP3481CN
+#
+DEF TrainAutomator-rescue:SP3481CN U 0 40 Y Y 1 F N
+F0 "U" -300 350 50 H V L CNN
+F1 "TrainAutomator-rescue:SP3481CN" 100 350 50 H V L CNN
+F2 "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" 1050 -350 50 H I C CIN
+F3 "" 0 0 50 H V C CNN
+$FPLIST
+ SOIC*
+$ENDFPLIST
+DRAW
+S -300 300 300 -300 0 1 10 f
+X RO 1 -400 200 100 R 50 50 1 1 O
+X ~RE~ 2 -400 100 100 R 50 50 1 1 I
+X DE 3 -400 -100 100 R 50 50 1 1 I
+X DI 4 -400 -200 100 R 50 50 1 1 I
+X GND 5 0 -400 100 U 50 50 1 1 W
+X A 6 400 100 100 L 50 50 1 1 B
+X B 7 400 -100 100 L 50 50 1 1 B
+X VCC 8 0 400 100 D 50 50 1 1 W
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:SSD1306_I2C
+#
+DEF TrainAutomator-rescue:SSD1306_I2C D 0 40 Y Y 1 F N
+F0 "D" -100 -550 60 H V L CNN
+F1 "TrainAutomator-rescue:SSD1306_I2C" -100 -650 60 H V L CNN
+F2 "" 0 50 60 H I C CNN
+F3 "" 0 50 60 H I C CNN
+DRAW
+S -100 -100 400 -500 0 1 0 N
+X GND 1 0 0 100 D 50 50 1 1 w
+X VCC 2 100 0 100 D 50 50 1 1 W
+X SCK 3 200 0 100 D 50 50 1 1 I
+X SDA 4 300 0 100 D 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:SW_Push
+#
+DEF TrainAutomator-rescue:SW_Push SW 0 40 N N 1 F N
+F0 "SW" 50 100 50 H V L CNN
+F1 "TrainAutomator-rescue:SW_Push" 0 -60 50 H V C CNN
+F2 "" 0 200 50 H V C CNN
+F3 "" 0 200 50 H V C CNN
+DRAW
+C -80 0 20 0 1 0 N
+C 80 0 20 0 1 0 N
+P 2 0 1 0 0 50 0 120 N
+P 2 0 1 0 100 50 -100 50 N
+X 1 1 -200 0 100 R 50 50 0 1 P
+X 2 2 200 0 100 L 50 50 0 1 P
+ENDDRAW
+ENDDEF
+#
+# TrainAutomator-rescue:Screw_Terminal_1x02
+#
+DEF TrainAutomator-rescue:Screw_Terminal_1x02 J 0 30 Y N 1 F N
+F0 "J" 0 250 50 H V C TNN
+F1 "TrainAutomator-rescue:Screw_Terminal_1x02" -150 0 50 V V C TNN
+F2 "" 0 -225 50 H I C CNN
+F3 "" -25 0 50 H I C CNN
+$FPLIST
+ bornier2
+ TerminalBlock*2pol
+$ENDFPLIST
+DRAW
+C 25 -100 50 0 1 10 N
+C 25 100 50 0 1 10 N
+S -50 175 100 -175 0 1 10 f
+P 2 0 1 10 -15 -75 50 -140 N
+P 2 0 1 10 0 140 65 75 N
+P 2 0 1 10 50 60 -15 125 N
+P 2 0 1 10 65 -125 0 -60 N
+X ~ 1 200 100 100 L 50 50 1 1 P
+X ~ 2 200 -100 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library

@@ -1,0 +1,1353 @@
+EESchema Schematic File Version 4
+LIBS:TrainAutomator-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "TrainAutomator"
+Date "2017-10-25"
+Rev ""
+Comp "MichaelTeeuw.nl"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L TrainAutomator-rescue:DFPLAYER_MINI DFPLAYER1
+U 1 1 59EB3498
+P 5450 1800
+F 0 "DFPLAYER1" H 5450 2487 60  0000 C CNN
+F 1 "DFPLAYER" H 5450 2381 60  0000 C CNN
+F 2 "DFPlayer:DFPlayerMini" H 5450 1800 60  0001 C CNN
+F 3 "" H 5450 1800 60  0000 C CNN
+	1    5450 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:SP3481CN U2
+U 1 1 59EB7F7C
+P 2350 4000
+F 0 "U2" H 2450 4450 50  0000 C CNN
+F 1 "MAX485" H 2600 4350 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm" H 3400 3650 50  0001 C CIN
+F 3 "" H 2350 4000 50  0000 C CNN
+	1    2350 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R2
+U 1 1 59EB8042
+P 3000 3900
+F 0 "R2" H 3070 3946 50  0000 L CNN
+F 1 "120R" H 3070 3855 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 2930 3900 50  0001 C CNN
+F 3 "" H 3000 3900 50  0000 C CNN
+	1    3000 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R3
+U 1 1 59EB80BD
+P 1550 4350
+F 0 "R3" H 1620 4396 50  0000 L CNN
+F 1 "1K" H 1620 4305 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 1480 4350 50  0001 C CNN
+F 3 "" H 1550 4350 50  0000 C CNN
+	1    1550 4350
+	-1   0    0    1   
+$EndComp
+$Comp
+L TrainAutomator-rescue:C_Small C3
+U 1 1 59EB8234
+P 1550 4650
+F 0 "C3" H 1642 4696 50  0000 L CNN
+F 1 "0.1uF" H 1642 4605 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 1550 4650 50  0001 C CNN
+F 3 "" H 1550 4650 50  0000 C CNN
+	1    1550 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:ARDUINO_NANO ARDUINO-NANO1
+U 1 1 59EB90B2
+P 2350 2100
+F 0 "ARDUINO-NANO1" H 2350 3110 70  0000 C CNN
+F 1 "ARDUINO_NANO" H 2350 2989 70  0000 C CNN
+F 2 "Arduino:ArduinoNano" H 2350 2100 60  0001 C CNN
+F 3 "" H 2350 2100 60  0000 C CNN
+	1    2350 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:C_Small C1
+U 1 1 59EB9501
+P 4900 4200
+F 0 "C1" H 4992 4246 50  0000 L CNN
+F 1 "0.33uF" H 4992 4155 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 4900 4200 50  0001 C CNN
+F 3 "" H 4900 4200 50  0000 C CNN
+	1    4900 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:C_Small C2
+U 1 1 59EB954C
+P 5800 4200
+F 0 "C2" H 5892 4246 50  0000 L CNN
+F 1 "0.1uF" H 5892 4155 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 5800 4200 50  0001 C CNN
+F 3 "" H 5800 4200 50  0000 C CNN
+	1    5800 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR01
+U 1 1 59EF255C
+P 5350 4350
+F 0 "#PWR01" H 5350 4100 50  0001 C CNN
+F 1 "GND" H 5355 4177 50  0000 C CNN
+F 2 "" H 5350 4350 50  0000 C CNN
+F 3 "" H 5350 4350 50  0000 C CNN
+	1    5350 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:+12V #PWR02
+U 1 1 59EF2610
+P 4850 4000
+F 0 "#PWR02" H 4850 3850 50  0001 C CNN
+F 1 "+12V" V 4865 4128 50  0000 L CNN
+F 2 "" H 4850 4000 50  0000 C CNN
+F 3 "" H 4850 4000 50  0000 C CNN
+	1    4850 4000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR03
+U 1 1 59EF2691
+P 5850 4000
+F 0 "#PWR03" H 5850 3850 50  0001 C CNN
+F 1 "+5V" V 5865 4128 50  0000 L CNN
+F 2 "" H 5850 4000 50  0000 C CNN
+F 3 "" H 5850 4000 50  0000 C CNN
+	1    5850 4000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4850 4000 4900 4000
+Wire Wire Line
+	4900 4300 5350 4300
+Connection ~ 5350 4300
+Wire Wire Line
+	5750 4000 5800 4000
+Wire Wire Line
+	5350 4350 5350 4300
+$Comp
+L TrainAutomator-rescue:LM7805 U3
+U 1 1 59EB94A5
+P 5350 4050
+F 0 "U3" H 5350 4365 50  0000 C CNN
+F 1 "LM7805" H 5350 4274 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:TO-263-2" H 5350 4050 50  0001 C CNN
+F 3 "" H 5350 4050 50  0000 C CNN
+	1    5350 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5800 4100 5800 4000
+Connection ~ 5800 4000
+Wire Wire Line
+	4900 4100 4900 4000
+Connection ~ 4900 4000
+$Comp
+L TrainAutomator-rescue:GND #PWR04
+U 1 1 59EF2F5B
+P 1550 4800
+F 0 "#PWR04" H 1550 4550 50  0001 C CNN
+F 1 "GND" H 1555 4627 50  0000 C CNN
+F 2 "" H 1550 4800 50  0000 C CNN
+F 3 "" H 1550 4800 50  0000 C CNN
+	1    1550 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 4500 1550 4550
+Wire Wire Line
+	1550 4750 1550 4800
+Wire Wire Line
+	1500 4100 1550 4100
+Text GLabel 1900 4200 0    39   Input ~ 0
+485_RX
+Text GLabel 1900 3800 0    39   Input ~ 0
+485_TX
+Text GLabel 1500 4100 0    39   Input ~ 0
+485_RSE
+$Comp
+L TrainAutomator-rescue:+5V #PWR05
+U 1 1 59EF3232
+P 2350 3550
+F 0 "#PWR05" H 2350 3400 50  0001 C CNN
+F 1 "+5V" H 2365 3723 50  0000 C CNN
+F 2 "" H 2350 3550 50  0000 C CNN
+F 3 "" H 2350 3550 50  0000 C CNN
+	1    2350 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1950 3800 1900 3800
+Wire Wire Line
+	1950 3900 1900 3900
+Wire Wire Line
+	1900 3900 1900 4100
+Connection ~ 1900 4100
+Wire Wire Line
+	1900 4200 1950 4200
+Wire Wire Line
+	1550 4200 1550 4100
+Connection ~ 1550 4100
+$Comp
+L TrainAutomator-rescue:GND #PWR06
+U 1 1 59EF346E
+P 2350 4450
+F 0 "#PWR06" H 2350 4200 50  0001 C CNN
+F 1 "GND" H 2355 4277 50  0000 C CNN
+F 2 "" H 2350 4450 50  0000 C CNN
+F 3 "" H 2350 4450 50  0000 C CNN
+	1    2350 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2350 4450 2350 4400
+Wire Wire Line
+	2750 4100 2800 4100
+Wire Wire Line
+	3200 4100 3200 3900
+Wire Wire Line
+	3200 3900 3150 3900
+Wire Wire Line
+	2750 3900 2800 3900
+Text GLabel 2850 3750 2    39   Input ~ 0
+RS485-A
+Text GLabel 2850 4200 2    39   Input ~ 0
+RS485-B
+Wire Wire Line
+	2800 4100 2800 4200
+Connection ~ 2800 4100
+Wire Wire Line
+	2800 3750 2800 3900
+Connection ~ 2800 3900
+Wire Wire Line
+	2800 3750 2850 3750
+Wire Wire Line
+	2800 4200 2850 4200
+Wire Wire Line
+	2350 3600 2350 3550
+Text GLabel 1750 1450 0    39   Input ~ 0
+485_TX
+Text GLabel 1750 1350 0    39   Input ~ 0
+485_RX
+Text GLabel 1750 1850 0    39   Input ~ 0
+485_RSE
+$Comp
+L TrainAutomator-rescue:SSD1306_I2C OLED-DISPLAY1
+U 1 1 59EF5A82
+P 1350 6250
+F 0 "OLED-DISPLAY1" H 1778 6060 60  0000 L CNN
+F 1 "SSD1306_I2C" H 1778 5954 60  0000 L CNN
+F 2 "SSD1306-OLED:SSD1306-096-OLED-I2C" H 1350 6300 60  0001 C CNN
+F 3 "" H 1350 6300 60  0001 C CNN
+	1    1350 6250
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR07
+U 1 1 59EF5B7C
+P 1450 6150
+F 0 "#PWR07" H 1450 6000 50  0001 C CNN
+F 1 "+5V" H 1465 6323 50  0000 C CNN
+F 2 "" H 1450 6150 50  0000 C CNN
+F 3 "" H 1450 6150 50  0000 C CNN
+	1    1450 6150
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR08
+U 1 1 59EF5C0B
+P 1350 6150
+F 0 "#PWR08" H 1350 5900 50  0001 C CNN
+F 1 "GND" H 1355 5977 50  0000 C CNN
+F 2 "" H 1350 6150 50  0000 C CNN
+F 3 "" H 1350 6150 50  0000 C CNN
+	1    1350 6150
+	-1   0    0    1   
+$EndComp
+Text GLabel 1550 6150 1    39   Input ~ 0
+SCK
+Text GLabel 1650 6150 1    39   Input ~ 0
+SDA
+Wire Wire Line
+	1650 6250 1650 6150
+Wire Wire Line
+	1550 6250 1550 6150
+Wire Wire Line
+	1450 6250 1450 6150
+Wire Wire Line
+	1350 6250 1350 6150
+Text GLabel 2950 2050 2    39   Input ~ 0
+SDA
+Text GLabel 2950 1950 2    39   Input ~ 0
+SCK
+Text GLabel 4350 1550 0    39   Input ~ 0
+DFP_RX
+Text GLabel 4350 1650 0    39   Input ~ 0
+DFP_TX
+Text GLabel 1750 2650 0    39   Input ~ 0
+DFP_RX
+Text GLabel 1750 2550 0    39   Input ~ 0
+DFP_TX
+$Comp
+L TrainAutomator-rescue:GND #PWR09
+U 1 1 59EF611B
+P 4750 2050
+F 0 "#PWR09" H 4750 1800 50  0001 C CNN
+F 1 "GND" V 4755 1922 50  0000 R CNN
+F 2 "" H 4750 2050 50  0000 C CNN
+F 3 "" H 4750 2050 50  0000 C CNN
+	1    4750 2050
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR010
+U 1 1 59EF615D
+P 4750 1450
+F 0 "#PWR010" H 4750 1300 50  0001 C CNN
+F 1 "+5V" V 4765 1578 50  0000 L CNN
+F 2 "" H 4750 1450 50  0000 C CNN
+F 3 "" H 4750 1450 50  0000 C CNN
+	1    4750 1450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4750 2050 4850 2050
+Wire Wire Line
+	4750 1450 4850 1450
+Text GLabel 4750 1950 0    39   Input ~ 0
+SPK_1
+Text GLabel 4750 2150 0    39   Input ~ 0
+SPK_2
+Wire Wire Line
+	4750 1950 4850 1950
+Wire Wire Line
+	4750 2150 4850 2150
+$Comp
+L TrainAutomator-rescue:GND #PWR011
+U 1 1 59EF6B84
+P 6150 2050
+F 0 "#PWR011" H 6150 1800 50  0001 C CNN
+F 1 "GND" V 6155 1922 50  0000 R CNN
+F 2 "" H 6150 2050 50  0000 C CNN
+F 3 "" H 6150 2050 50  0000 C CNN
+	1    6150 2050
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6150 2050 6050 2050
+NoConn ~ 4850 1850
+NoConn ~ 4850 1750
+NoConn ~ 6050 2150
+NoConn ~ 6050 1950
+NoConn ~ 6050 1850
+NoConn ~ 6050 1750
+NoConn ~ 6050 1650
+NoConn ~ 6050 1550
+NoConn ~ 6050 1450
+Text GLabel 8000 1700 0    39   Input ~ 0
+SPK_1
+Text GLabel 8000 1900 0    39   Input ~ 0
+SPK_2
+$Comp
+L TrainAutomator-rescue:RJ12 J3
+U 1 1 59EF74A8
+P 8500 2750
+F 0 "J3" H 8606 3375 50  0000 C CNN
+F 1 "RJ12" H 8606 3284 50  0000 C CNN
+F 2 "RJ12:RJ12" H 8500 2750 50  0001 C CNN
+F 3 "" H 8500 2750 50  0000 C CNN
+	1    8500 2750
+	0    1    1    0   
+$EndComp
+Text GLabel 7950 2750 0    39   Input ~ 0
+PHONE-A
+Text GLabel 7950 2850 0    39   Input ~ 0
+PHONE-B
+Wire Wire Line
+	7950 2750 8050 2750
+Wire Wire Line
+	7950 2850 8050 2850
+NoConn ~ 8050 3050
+NoConn ~ 8050 2950
+NoConn ~ 8050 2650
+NoConn ~ 8050 2550
+NoConn ~ 8800 3250
+NoConn ~ 8900 3250
+$Comp
+L TrainAutomator-rescue:+5V #PWR012
+U 1 1 59EF7DC0
+P 3150 1650
+F 0 "#PWR012" H 3150 1500 50  0001 C CNN
+F 1 "+5V" V 3165 1778 50  0000 L CNN
+F 2 "" H 3150 1650 50  0000 C CNN
+F 3 "" H 3150 1650 50  0000 C CNN
+	1    3150 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR013
+U 1 1 59EF7E45
+P 3050 1450
+F 0 "#PWR013" H 3050 1200 50  0001 C CNN
+F 1 "GND" V 3055 1322 50  0000 R CNN
+F 2 "" H 3050 1450 50  0000 C CNN
+F 3 "" H 3050 1450 50  0000 C CNN
+	1    3050 1450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR014
+U 1 1 59EF7EB8
+P 1650 1650
+F 0 "#PWR014" H 1650 1400 50  0001 C CNN
+F 1 "GND" V 1655 1522 50  0000 R CNN
+F 2 "" H 1650 1650 50  0000 C CNN
+F 3 "" H 1650 1650 50  0000 C CNN
+	1    1650 1650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3050 1450 2950 1450
+Wire Wire Line
+	1650 1650 1750 1650
+$Comp
+L TrainAutomator-rescue:R R1
+U 1 1 59EF8227
+P 4600 1550
+F 0 "R1" H 4670 1596 50  0000 L CNN
+F 1 "1K" H 4670 1505 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 4530 1550 50  0001 C CNN
+F 3 "" H 4600 1550 50  0000 C CNN
+	1    4600 1550
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:Jumper_NC_Small JP1
+U 1 1 59EF885F
+P 3050 1650
+F 0 "JP1" H 3200 1700 50  0000 C CNN
+F 1 "Jumper_NC_Small" H 3300 1550 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.00mm" H 3050 1650 50  0001 C CNN
+F 3 "" H 3050 1650 50  0000 C CNN
+	1    3050 1650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 2950 1350
+NoConn ~ 1750 1550
+NoConn ~ 2950 1550
+NoConn ~ 2950 2550
+NoConn ~ 2950 2650
+Text GLabel 1750 1750 0    39   Input ~ 0
+D2
+Text GLabel 1750 1950 0    39   Input ~ 0
+D4
+Text GLabel 1750 2450 0    39   Input ~ 0
+D9
+Text GLabel 1750 2750 0    39   Input ~ 0
+D12
+Text GLabel 2950 2450 2    39   Input ~ 0
+A0
+Wire Wire Line
+	4850 1650 4350 1650
+Wire Wire Line
+	4350 1550 4450 1550
+Wire Wire Line
+	4750 1550 4850 1550
+$Comp
+L TrainAutomator-rescue:LED D1
+U 1 1 59F04467
+P 3050 6300
+F 0 "D1" V 2995 6378 50  0000 L CNN
+F 1 "LED" V 3086 6378 50  0000 L CNN
+F 2 "LEDs:LED_1206_HandSoldering" H 3050 6300 50  0001 C CNN
+F 3 "" H 3050 6300 50  0000 C CNN
+	1    3050 6300
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R10
+U 1 1 59F04575
+P 3050 6700
+F 0 "R10" H 3120 6746 50  0000 L CNN
+F 1 "150R" H 3120 6655 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 2980 6700 50  0001 C CNN
+F 3 "" H 3050 6700 50  0000 C CNN
+	1    3050 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR016
+U 1 1 59F045D1
+P 3050 6050
+F 0 "#PWR016" H 3050 5800 50  0001 C CNN
+F 1 "GND" H 3055 5877 50  0000 C CNN
+F 2 "" H 3050 6050 50  0000 C CNN
+F 3 "" H 3050 6050 50  0000 C CNN
+	1    3050 6050
+	-1   0    0    1   
+$EndComp
+$Comp
+L TrainAutomator-rescue:Screw_Terminal_1x02 J2
+U 1 1 59F04EA6
+P 8300 1800
+F 0 "J2" H 8220 1754 50  0000 R CNN
+F 1 "Screw_Terminal_1x02" H 8220 1845 50  0000 R CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_4UCON_19963_02x3.5mm_Straight" H 8300 1575 50  0001 C CNN
+F 3 "" H 8275 1800 50  0001 C CNN
+	1    8300 1800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8100 1700 8000 1700
+Wire Wire Line
+	8100 1900 8000 1900
+$Comp
+L TrainAutomator-rescue:CONN_01X03 P3
+U 1 1 59F053CC
+P 8250 4250
+F 0 "P3" H 8328 4291 50  0000 L CNN
+F 1 "CONN_01X03" H 8328 4200 50  0000 L CNN
+F 2 "Connectors_JST:JST_PH_S3B-PH-K_03x2.00mm_Angled" H 8250 4250 50  0001 C CNN
+F 3 "" H 8250 4250 50  0000 C CNN
+	1    8250 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR017
+U 1 1 59F054F7
+P 7950 4350
+F 0 "#PWR017" H 7950 4100 50  0001 C CNN
+F 1 "GND" V 7955 4222 50  0000 R CNN
+F 2 "" H 7950 4350 50  0000 C CNN
+F 3 "" H 7950 4350 50  0000 C CNN
+	1    7950 4350
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR018
+U 1 1 59F05754
+P 7950 4250
+F 0 "#PWR018" H 7950 4100 50  0001 C CNN
+F 1 "+5V" V 7965 4378 50  0000 L CNN
+F 2 "" H 7950 4250 50  0000 C CNN
+F 3 "" H 7950 4250 50  0000 C CNN
+	1    7950 4250
+	0    -1   -1   0   
+$EndComp
+Text GLabel 7950 4150 0    39   Input ~ 0
+D4
+Wire Wire Line
+	8050 4150 7950 4150
+Wire Wire Line
+	8050 4250 7950 4250
+Wire Wire Line
+	8050 4350 7950 4350
+$Comp
+L TrainAutomator-rescue:CONN_01X03 P4
+U 1 1 59F05F6D
+P 8250 4650
+F 0 "P4" H 8328 4691 50  0000 L CNN
+F 1 "CONN_01X03" H 8328 4600 50  0000 L CNN
+F 2 "Connectors_JST:JST_PH_S3B-PH-K_03x2.00mm_Angled" H 8250 4650 50  0001 C CNN
+F 3 "" H 8250 4650 50  0000 C CNN
+	1    8250 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR019
+U 1 1 59F05F73
+P 7950 4750
+F 0 "#PWR019" H 7950 4500 50  0001 C CNN
+F 1 "GND" V 7955 4622 50  0000 R CNN
+F 2 "" H 7950 4750 50  0000 C CNN
+F 3 "" H 7950 4750 50  0000 C CNN
+	1    7950 4750
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR020
+U 1 1 59F05F79
+P 7950 4650
+F 0 "#PWR020" H 7950 4500 50  0001 C CNN
+F 1 "+5V" V 7965 4778 50  0000 L CNN
+F 2 "" H 7950 4650 50  0000 C CNN
+F 3 "" H 7950 4650 50  0000 C CNN
+	1    7950 4650
+	0    -1   -1   0   
+$EndComp
+Text GLabel 7950 4550 0    39   Input ~ 0
+D8
+Wire Wire Line
+	8050 4550 7950 4550
+Wire Wire Line
+	8050 4650 7950 4650
+Wire Wire Line
+	8050 4750 7950 4750
+$Comp
+L TrainAutomator-rescue:CONN_01X03 P5
+U 1 1 59F061CC
+P 8250 5050
+F 0 "P5" H 8328 5091 50  0000 L CNN
+F 1 "CONN_01X03" H 8328 5000 50  0000 L CNN
+F 2 "Connectors_JST:JST_PH_S3B-PH-K_03x2.00mm_Angled" H 8250 5050 50  0001 C CNN
+F 3 "" H 8250 5050 50  0000 C CNN
+	1    8250 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR021
+U 1 1 59F061D2
+P 7950 5150
+F 0 "#PWR021" H 7950 4900 50  0001 C CNN
+F 1 "GND" V 7955 5022 50  0000 R CNN
+F 2 "" H 7950 5150 50  0000 C CNN
+F 3 "" H 7950 5150 50  0000 C CNN
+	1    7950 5150
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR022
+U 1 1 59F061D8
+P 7950 5050
+F 0 "#PWR022" H 7950 4900 50  0001 C CNN
+F 1 "+5V" V 7965 5178 50  0000 L CNN
+F 2 "" H 7950 5050 50  0000 C CNN
+F 3 "" H 7950 5050 50  0000 C CNN
+	1    7950 5050
+	0    -1   -1   0   
+$EndComp
+Text GLabel 7950 4950 0    39   Input ~ 0
+D9
+Wire Wire Line
+	8050 4950 7950 4950
+Wire Wire Line
+	8050 5050 7950 5050
+Wire Wire Line
+	8050 5150 7950 5150
+$Comp
+L TrainAutomator-rescue:CONN_01X03 P6
+U 1 1 59F061E2
+P 8250 5450
+F 0 "P6" H 8328 5491 50  0000 L CNN
+F 1 "CONN_01X03" H 8328 5400 50  0000 L CNN
+F 2 "Connectors_JST:JST_PH_S3B-PH-K_03x2.00mm_Angled" H 8250 5450 50  0001 C CNN
+F 3 "" H 8250 5450 50  0000 C CNN
+	1    8250 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR023
+U 1 1 59F061E8
+P 7950 5550
+F 0 "#PWR023" H 7950 5300 50  0001 C CNN
+F 1 "GND" V 7955 5422 50  0000 R CNN
+F 2 "" H 7950 5550 50  0000 C CNN
+F 3 "" H 7950 5550 50  0000 C CNN
+	1    7950 5550
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR024
+U 1 1 59F061EE
+P 7950 5450
+F 0 "#PWR024" H 7950 5300 50  0001 C CNN
+F 1 "+5V" V 7965 5578 50  0000 L CNN
+F 2 "" H 7950 5450 50  0000 C CNN
+F 3 "" H 7950 5450 50  0000 C CNN
+	1    7950 5450
+	0    -1   -1   0   
+$EndComp
+Text GLabel 7950 5350 0    39   Input ~ 0
+D12
+Wire Wire Line
+	8050 5350 7950 5350
+Wire Wire Line
+	8050 5450 7950 5450
+Wire Wire Line
+	8050 5550 7950 5550
+$Comp
+L TrainAutomator-rescue:CONN_01X03 P7
+U 1 1 59F063FF
+P 8250 5850
+F 0 "P7" H 8328 5891 50  0000 L CNN
+F 1 "CONN_01X03" H 8328 5800 50  0000 L CNN
+F 2 "Connectors_JST:JST_PH_S3B-PH-K_03x2.00mm_Angled" H 8250 5850 50  0001 C CNN
+F 3 "" H 8250 5850 50  0000 C CNN
+	1    8250 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR025
+U 1 1 59F06405
+P 7950 5950
+F 0 "#PWR025" H 7950 5700 50  0001 C CNN
+F 1 "GND" V 7955 5822 50  0000 R CNN
+F 2 "" H 7950 5950 50  0000 C CNN
+F 3 "" H 7950 5950 50  0000 C CNN
+	1    7950 5950
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR026
+U 1 1 59F0640B
+P 7950 5850
+F 0 "#PWR026" H 7950 5700 50  0001 C CNN
+F 1 "+5V" V 7965 5978 50  0000 L CNN
+F 2 "" H 7950 5850 50  0000 C CNN
+F 3 "" H 7950 5850 50  0000 C CNN
+	1    7950 5850
+	0    -1   -1   0   
+$EndComp
+Text GLabel 7950 5750 0    39   Input ~ 0
+A0
+Wire Wire Line
+	8050 5750 7950 5750
+Wire Wire Line
+	8050 5850 7950 5850
+Wire Wire Line
+	8050 5950 7950 5950
+$Comp
+L TrainAutomator-rescue:CONN_01X04 P2
+U 1 1 59F0734C
+P 9900 3900
+F 0 "P2" H 9978 3941 50  0000 L CNN
+F 1 "CONN_01X04" H 9978 3850 50  0000 L CNN
+F 2 "Connectors_JST:JST_PH_S4B-PH-K_04x2.00mm_Angled" H 9900 3900 50  0001 C CNN
+F 3 "" H 9900 3900 50  0000 C CNN
+	1    9900 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR027
+U 1 1 59F0780B
+P 9600 3750
+F 0 "#PWR027" H 9600 3500 50  0001 C CNN
+F 1 "GND" V 9605 3622 50  0000 R CNN
+F 2 "" H 9600 3750 50  0000 C CNN
+F 3 "" H 9600 3750 50  0000 C CNN
+	1    9600 3750
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR028
+U 1 1 59F07889
+P 9600 3850
+F 0 "#PWR028" H 9600 3700 50  0001 C CNN
+F 1 "+5V" V 9615 3978 50  0000 L CNN
+F 2 "" H 9600 3850 50  0000 C CNN
+F 3 "" H 9600 3850 50  0000 C CNN
+	1    9600 3850
+	0    -1   -1   0   
+$EndComp
+Text GLabel 9600 3950 0    39   Input ~ 0
+SCK
+Text GLabel 9600 4050 0    39   Input ~ 0
+SDA
+Wire Wire Line
+	9700 4050 9600 4050
+Wire Wire Line
+	9700 3950 9600 3950
+Wire Wire Line
+	9700 3850 9600 3850
+Wire Wire Line
+	9700 3750 9600 3750
+NoConn ~ 2950 2750
+NoConn ~ 2950 1850
+NoConn ~ 2950 1750
+Text GLabel 1750 2050 0    39   Input ~ 0
+LED3
+Text GLabel 1750 2150 0    39   Input ~ 0
+LED2
+Text GLabel 1750 2250 0    39   Input ~ 0
+LED1
+Text GLabel 3050 6950 3    39   Input ~ 0
+LED1
+Wire Wire Line
+	3050 6950 3050 6850
+Wire Wire Line
+	3050 6550 3050 6450
+Wire Wire Line
+	3050 6150 3050 6050
+$Comp
+L TrainAutomator-rescue:LED D2
+U 1 1 59F0AD60
+P 3400 6300
+F 0 "D2" V 3345 6378 50  0000 L CNN
+F 1 "LED" V 3436 6378 50  0000 L CNN
+F 2 "LEDs:LED_1206_HandSoldering" H 3400 6300 50  0001 C CNN
+F 3 "" H 3400 6300 50  0000 C CNN
+	1    3400 6300
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R11
+U 1 1 59F0AD66
+P 3400 6700
+F 0 "R11" H 3470 6746 50  0000 L CNN
+F 1 "150R" H 3470 6655 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 3330 6700 50  0001 C CNN
+F 3 "" H 3400 6700 50  0000 C CNN
+	1    3400 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR029
+U 1 1 59F0AD6C
+P 3400 6050
+F 0 "#PWR029" H 3400 5800 50  0001 C CNN
+F 1 "GND" H 3405 5877 50  0000 C CNN
+F 2 "" H 3400 6050 50  0000 C CNN
+F 3 "" H 3400 6050 50  0000 C CNN
+	1    3400 6050
+	-1   0    0    1   
+$EndComp
+Text GLabel 3400 6950 3    39   Input ~ 0
+LED2
+Wire Wire Line
+	3400 6950 3400 6850
+Wire Wire Line
+	3400 6550 3400 6450
+Wire Wire Line
+	3400 6150 3400 6050
+$Comp
+L TrainAutomator-rescue:LED D3
+U 1 1 59F0AE18
+P 3700 6300
+F 0 "D3" V 3645 6378 50  0000 L CNN
+F 1 "LED" V 3736 6378 50  0000 L CNN
+F 2 "LEDs:LED_1206_HandSoldering" H 3700 6300 50  0001 C CNN
+F 3 "" H 3700 6300 50  0000 C CNN
+	1    3700 6300
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R12
+U 1 1 59F0AE1E
+P 3700 6700
+F 0 "R12" H 3770 6746 50  0000 L CNN
+F 1 "150R" H 3770 6655 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 3630 6700 50  0001 C CNN
+F 3 "" H 3700 6700 50  0000 C CNN
+	1    3700 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR030
+U 1 1 59F0AE24
+P 3700 6050
+F 0 "#PWR030" H 3700 5800 50  0001 C CNN
+F 1 "GND" H 3705 5877 50  0000 C CNN
+F 2 "" H 3700 6050 50  0000 C CNN
+F 3 "" H 3700 6050 50  0000 C CNN
+	1    3700 6050
+	-1   0    0    1   
+$EndComp
+Text GLabel 3700 6950 3    39   Input ~ 0
+LED3
+Wire Wire Line
+	3700 6950 3700 6850
+Wire Wire Line
+	3700 6550 3700 6450
+Wire Wire Line
+	3700 6150 3700 6050
+$Comp
+L TrainAutomator-rescue:SW_Push SW1
+U 1 1 59F0B387
+P 4550 6850
+F 0 "SW1" V 4596 6802 50  0000 R CNN
+F 1 "SW_Push" V 4505 6802 50  0000 R CNN
+F 2 "Buttons_Switches_SMD:SW_SPST_EVQPE1" H 4550 7050 50  0001 C CNN
+F 3 "" H 4550 7050 50  0000 C CNN
+	1    4550 6850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R7
+U 1 1 59F0B4DB
+P 4550 6450
+F 0 "R7" H 4620 6496 50  0000 L CNN
+F 1 "1K" H 4620 6405 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 4480 6450 50  0001 C CNN
+F 3 "" H 4550 6450 50  0000 C CNN
+	1    4550 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR031
+U 1 1 59F0B574
+P 4550 7100
+F 0 "#PWR031" H 4550 6850 50  0001 C CNN
+F 1 "GND" H 4555 6927 50  0000 C CNN
+F 2 "" H 4550 7100 50  0000 C CNN
+F 3 "" H 4550 7100 50  0000 C CNN
+	1    4550 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:C_Small C4
+U 1 1 59F0B62D
+P 4800 6450
+F 0 "C4" H 4892 6496 50  0000 L CNN
+F 1 "0.1uF" H 4892 6405 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 4800 6450 50  0001 C CNN
+F 3 "" H 4800 6450 50  0000 C CNN
+	1    4800 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R4
+U 1 1 59F0B789
+P 4550 6050
+F 0 "R4" H 4620 6096 50  0000 L CNN
+F 1 "10K" H 4620 6005 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 4480 6050 50  0001 C CNN
+F 3 "" H 4550 6050 50  0000 C CNN
+	1    4550 6050
+	1    0    0    -1  
+$EndComp
+Text GLabel 2950 2350 2    39   Input ~ 0
+SW1
+Text GLabel 2950 2250 2    39   Input ~ 0
+SW2
+Text GLabel 2950 2150 2    39   Input ~ 0
+SW3
+$Comp
+L TrainAutomator-rescue:+5V #PWR032
+U 1 1 59F0C4AD
+P 4550 5850
+F 0 "#PWR032" H 4550 5700 50  0001 C CNN
+F 1 "+5V" H 4565 6023 50  0000 C CNN
+F 2 "" H 4550 5850 50  0000 C CNN
+F 3 "" H 4550 5850 50  0000 C CNN
+	1    4550 5850
+	1    0    0    -1  
+$EndComp
+Text GLabel 4800 5950 1    39   Input ~ 0
+SW1
+Wire Wire Line
+	4550 7100 4550 7050
+Wire Wire Line
+	4550 6650 4550 6600
+Wire Wire Line
+	4550 6200 4550 6250
+Wire Wire Line
+	4550 5850 4550 5900
+Wire Wire Line
+	4550 6250 4800 6250
+Connection ~ 4550 6250
+Wire Wire Line
+	4800 5950 4800 6250
+Connection ~ 4800 6250
+$Comp
+L TrainAutomator-rescue:GND #PWR033
+U 1 1 59F0D268
+P 4800 7100
+F 0 "#PWR033" H 4800 6850 50  0001 C CNN
+F 1 "GND" H 4805 6927 50  0000 C CNN
+F 2 "" H 4800 7100 50  0000 C CNN
+F 3 "" H 4800 7100 50  0000 C CNN
+	1    4800 7100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 6550 4800 7100
+$Comp
+L TrainAutomator-rescue:SW_Push SW2
+U 1 1 59F0DBB1
+P 5250 6850
+F 0 "SW2" V 5296 6802 50  0000 R CNN
+F 1 "SW_Push" V 5205 6802 50  0000 R CNN
+F 2 "Buttons_Switches_SMD:SW_SPST_EVQPE1" H 5250 7050 50  0001 C CNN
+F 3 "" H 5250 7050 50  0000 C CNN
+	1    5250 6850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R8
+U 1 1 59F0DBB7
+P 5250 6450
+F 0 "R8" H 5320 6496 50  0000 L CNN
+F 1 "1K" H 5320 6405 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 5180 6450 50  0001 C CNN
+F 3 "" H 5250 6450 50  0000 C CNN
+	1    5250 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR034
+U 1 1 59F0DBBD
+P 5250 7100
+F 0 "#PWR034" H 5250 6850 50  0001 C CNN
+F 1 "GND" H 5255 6927 50  0000 C CNN
+F 2 "" H 5250 7100 50  0000 C CNN
+F 3 "" H 5250 7100 50  0000 C CNN
+	1    5250 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:C_Small C5
+U 1 1 59F0DBC3
+P 5500 6450
+F 0 "C5" H 5592 6496 50  0000 L CNN
+F 1 "0.1uF" H 5592 6405 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 5500 6450 50  0001 C CNN
+F 3 "" H 5500 6450 50  0000 C CNN
+	1    5500 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R5
+U 1 1 59F0DBC9
+P 5250 6050
+F 0 "R5" H 5320 6096 50  0000 L CNN
+F 1 "10K" H 5320 6005 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 5180 6050 50  0001 C CNN
+F 3 "" H 5250 6050 50  0000 C CNN
+	1    5250 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR035
+U 1 1 59F0DBCF
+P 5250 5850
+F 0 "#PWR035" H 5250 5700 50  0001 C CNN
+F 1 "+5V" H 5265 6023 50  0000 C CNN
+F 2 "" H 5250 5850 50  0000 C CNN
+F 3 "" H 5250 5850 50  0000 C CNN
+	1    5250 5850
+	1    0    0    -1  
+$EndComp
+Text GLabel 5500 5950 1    39   Input ~ 0
+SW2
+Wire Wire Line
+	5250 7100 5250 7050
+Wire Wire Line
+	5250 6650 5250 6600
+Wire Wire Line
+	5250 6200 5250 6250
+Wire Wire Line
+	5250 5850 5250 5900
+Wire Wire Line
+	5250 6250 5500 6250
+Connection ~ 5250 6250
+Wire Wire Line
+	5500 5950 5500 6250
+Connection ~ 5500 6250
+$Comp
+L TrainAutomator-rescue:GND #PWR036
+U 1 1 59F0DBE0
+P 5500 7100
+F 0 "#PWR036" H 5500 6850 50  0001 C CNN
+F 1 "GND" H 5505 6927 50  0000 C CNN
+F 2 "" H 5500 7100 50  0000 C CNN
+F 3 "" H 5500 7100 50  0000 C CNN
+	1    5500 7100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5500 6550 5500 7100
+$Comp
+L TrainAutomator-rescue:SW_Push SW3
+U 1 1 59F0E7D4
+P 5950 6850
+F 0 "SW3" V 5996 6802 50  0000 R CNN
+F 1 "SW_Push" V 5905 6802 50  0000 R CNN
+F 2 "Buttons_Switches_SMD:SW_SPST_EVQPE1" H 5950 7050 50  0001 C CNN
+F 3 "" H 5950 7050 50  0000 C CNN
+	1    5950 6850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R9
+U 1 1 59F0E7DA
+P 5950 6450
+F 0 "R9" H 6020 6496 50  0000 L CNN
+F 1 "1K" H 6020 6405 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 5880 6450 50  0001 C CNN
+F 3 "" H 5950 6450 50  0000 C CNN
+	1    5950 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR037
+U 1 1 59F0E7E0
+P 5950 7100
+F 0 "#PWR037" H 5950 6850 50  0001 C CNN
+F 1 "GND" H 5955 6927 50  0000 C CNN
+F 2 "" H 5950 7100 50  0000 C CNN
+F 3 "" H 5950 7100 50  0000 C CNN
+	1    5950 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:C_Small C6
+U 1 1 59F0E7E6
+P 6200 6450
+F 0 "C6" H 6292 6496 50  0000 L CNN
+F 1 "0.1uF" H 6292 6405 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 6200 6450 50  0001 C CNN
+F 3 "" H 6200 6450 50  0000 C CNN
+	1    6200 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:R R6
+U 1 1 59F0E7EC
+P 5950 6050
+F 0 "R6" H 6020 6096 50  0000 L CNN
+F 1 "10K" H 6020 6005 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 5880 6050 50  0001 C CNN
+F 3 "" H 5950 6050 50  0000 C CNN
+	1    5950 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR038
+U 1 1 59F0E7F2
+P 5950 5850
+F 0 "#PWR038" H 5950 5700 50  0001 C CNN
+F 1 "+5V" H 5965 6023 50  0000 C CNN
+F 2 "" H 5950 5850 50  0000 C CNN
+F 3 "" H 5950 5850 50  0000 C CNN
+	1    5950 5850
+	1    0    0    -1  
+$EndComp
+Text GLabel 6200 5950 1    39   Input ~ 0
+SW3
+Wire Wire Line
+	5950 7100 5950 7050
+Wire Wire Line
+	5950 6650 5950 6600
+Wire Wire Line
+	5950 6200 5950 6250
+Wire Wire Line
+	5950 5850 5950 5900
+Wire Wire Line
+	5950 6250 6200 6250
+Connection ~ 5950 6250
+Wire Wire Line
+	6200 5950 6200 6250
+Connection ~ 6200 6250
+$Comp
+L TrainAutomator-rescue:GND #PWR039
+U 1 1 59F0E803
+P 6200 7100
+F 0 "#PWR039" H 6200 6850 50  0001 C CNN
+F 1 "GND" H 6205 6927 50  0000 C CNN
+F 2 "" H 6200 7100 50  0000 C CNN
+F 3 "" H 6200 7100 50  0000 C CNN
+	1    6200 7100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 6550 6200 7100
+$Comp
+L TrainAutomator-rescue:CONN_01X03 P1
+U 1 1 59F0EEF1
+P 8250 3850
+F 0 "P1" H 8328 3891 50  0000 L CNN
+F 1 "CONN_01X03" H 8328 3800 50  0000 L CNN
+F 2 "Connectors_JST:JST_PH_S3B-PH-K_03x2.00mm_Angled" H 8250 3850 50  0001 C CNN
+F 3 "" H 8250 3850 50  0000 C CNN
+	1    8250 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR040
+U 1 1 59F0EEF7
+P 7950 3950
+F 0 "#PWR040" H 7950 3700 50  0001 C CNN
+F 1 "GND" V 7955 3822 50  0000 R CNN
+F 2 "" H 7950 3950 50  0000 C CNN
+F 3 "" H 7950 3950 50  0000 C CNN
+	1    7950 3950
+	0    1    1    0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+5V #PWR041
+U 1 1 59F0EEFD
+P 7950 3850
+F 0 "#PWR041" H 7950 3700 50  0001 C CNN
+F 1 "+5V" V 7965 3978 50  0000 L CNN
+F 2 "" H 7950 3850 50  0000 C CNN
+F 3 "" H 7950 3850 50  0000 C CNN
+	1    7950 3850
+	0    -1   -1   0   
+$EndComp
+Text GLabel 7950 3750 0    39   Input ~ 0
+D2
+Wire Wire Line
+	8050 3750 7950 3750
+Wire Wire Line
+	8050 3850 7950 3850
+Wire Wire Line
+	8050 3950 7950 3950
+Text GLabel 1750 2350 0    39   Input ~ 0
+D8
+Wire Notes Line
+	500  3100 7000 3100
+Wire Notes Line
+	550  5300 7000 5300
+Wire Notes Line
+	3800 500  3800 5250
+Wire Notes Line
+	2600 5300 2600 7700
+Wire Notes Line
+	4100 5300 4100 7700
+$Comp
+L TrainAutomator-rescue:Screw_Terminal_1x02 J1
+U 1 1 59F100E8
+P 8300 1100
+F 0 "J1" H 8220 1054 50  0000 R CNN
+F 1 "Screw_Terminal_1x02" H 8220 1145 50  0000 R CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_4UCON_19963_02x3.5mm_Straight" H 8300 875 50  0001 C CNN
+F 3 "" H 8275 1100 50  0001 C CNN
+	1    8300 1100
+	-1   0    0    1   
+$EndComp
+$Comp
+L TrainAutomator-rescue:+12V #PWR015
+U 1 1 59F10166
+P 8000 1000
+F 0 "#PWR015" H 8000 850 50  0001 C CNN
+F 1 "+12V" V 8015 1128 50  0000 L CNN
+F 2 "" H 8000 1000 50  0000 C CNN
+F 3 "" H 8000 1000 50  0000 C CNN
+	1    8000 1000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L TrainAutomator-rescue:GND #PWR042
+U 1 1 59F101C3
+P 8000 1200
+F 0 "#PWR042" H 8000 950 50  0001 C CNN
+F 1 "GND" V 8005 1072 50  0000 R CNN
+F 2 "" H 8000 1200 50  0000 C CNN
+F 3 "" H 8000 1200 50  0000 C CNN
+	1    8000 1200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8000 1000 8100 1000
+Wire Wire Line
+	8000 1200 8100 1200
+Text Notes 550  3000 0    60   ~ 0
+MICROCONTROLLER
+Text Notes 550  5200 0    60   ~ 0
+RS485
+Text Notes 550  7700 0    60   ~ 0
+OLED
+Text Notes 2700 7700 0    60   ~ 0
+LED
+Text Notes 4200 7700 0    60   ~ 0
+DEBOUNCED PUSH BUTTONS
+Text Notes 3900 5200 0    60   ~ 0
+VOLTAGE REGULATOR
+Text Notes 3900 3000 0    60   ~ 0
+AUDIO PLAYER
+Text Notes 7100 6450 0    60   ~ 0
+CONNECTIONS
+Text Notes 7550 3600 0    49   ~ 0
+GPIO
+Text Notes 7550 2450 0    49   ~ 0
+RS485\n
+Text Notes 7550 1550 0    49   ~ 0
+SPEAKER\n
+Text Notes 7550 850  0    49   ~ 0
+POWER\n
+Text Notes 9500 3250 0    49   ~ 0
+I2C
+$Comp
+L TrainAutomator-rescue:Jumper_NC_Dual JP2
+U 1 1 5A216F8A
+P 10150 1850
+F 0 "JP2" H 10150 2089 50  0000 C CNN
+F 1 "Jumper_NC_Dual" H 10150 1998 50  0000 C CNN
+F 2 "Jumper:DualJumper-NC" H 10150 1850 50  0001 C CNN
+F 3 "" H 10150 1850 50  0000 C CNN
+	1    10150 1850
+	1    0    0    -1  
+$EndComp
+Text GLabel 10150 2000 3    39   Input ~ 0
+PHONE-A
+Text GLabel 9850 1850 0    39   Input ~ 0
+RS485-A
+Text GLabel 10450 1850 2    39   Input ~ 0
+RS485-B
+Wire Wire Line
+	9850 1850 9900 1850
+Wire Wire Line
+	10400 1850 10450 1850
+Wire Wire Line
+	10150 2000 10150 1950
+$Comp
+L TrainAutomator-rescue:Jumper_NC_Dual JP3
+U 1 1 5A219C9A
+P 10150 2700
+F 0 "JP3" H 10150 2939 50  0000 C CNN
+F 1 "Jumper_NC_Dual" H 10150 2848 50  0000 C CNN
+F 2 "Jumper:DualJumper-NC" H 10150 2700 50  0001 C CNN
+F 3 "" H 10150 2700 50  0000 C CNN
+	1    10150 2700
+	1    0    0    -1  
+$EndComp
+Text GLabel 10150 2850 3    39   Input ~ 0
+PHONE-B
+Text GLabel 9850 2700 0    39   Input ~ 0
+RS485-A
+Text GLabel 10450 2700 2    39   Input ~ 0
+RS485-B
+Wire Wire Line
+	9850 2700 9900 2700
+Wire Wire Line
+	10400 2700 10450 2700
+Wire Wire Line
+	10150 2850 10150 2800
+Wire Wire Line
+	5350 4300 5800 4300
+Wire Wire Line
+	5800 4000 5850 4000
+Wire Wire Line
+	4900 4000 4950 4000
+Wire Wire Line
+	1900 4100 1950 4100
+Wire Wire Line
+	1550 4100 1900 4100
+Wire Wire Line
+	2800 4100 3200 4100
+Wire Wire Line
+	2800 3900 2850 3900
+Wire Wire Line
+	4550 6250 4550 6300
+Wire Wire Line
+	4800 6250 4800 6350
+Wire Wire Line
+	5250 6250 5250 6300
+Wire Wire Line
+	5500 6250 5500 6350
+Wire Wire Line
+	5950 6250 5950 6300
+Wire Wire Line
+	6200 6250 6200 6350
+Wire Notes Line
+	7000 500  7000 6500
+$EndSCHEMATC
